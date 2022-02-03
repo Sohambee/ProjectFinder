@@ -1,0 +1,26 @@
+<div class="flex mb-4 px-4 sm:px-0">
+  <%
+    color =  'primary'
+  %>
+  <!-- <div class="w-16 content-center"><%= inline_svg_pack_tag 'media/svgs/featured-projects.svg', class: "fill-current text-#{color}-600" %></div> -->
+  <div class="block sm:flex w-full pt-0 sm:pt-1">
+    <div class="w-full text-2xl text-red-400 mt-4 font-bold">
+      Featured Categories
+    </div>
+  </div>
+</div>
+
+<div class="w-full px-4 sm:px-0 space-y-bottom-4 sm:grid grid-cols-2 md:grid-cols-3 sm:gap-6">
+  <% collection.first(3).each do |category| %>
+    <% cache category do %>
+      <%= render partial: 'partials/category_card', locals: { category: category} %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="w-full text-center">
+      <%= link_to projects_path(highlight: true), class: 'text-primary-700 font-bold group' do %>
+        <button class="rounded-full border border-none bg-primary-500 text-white hover:bg-primary-600 transform transition-all duration-100 hover:scale-110 py-3 px-6">See All</button>
+        <!-- <%= t('see_all') %> <%= inline_svg_pack_tag 'media/svgs/chevron-right.svg', class: 'inline-block fill-current transform transition-transform duration-100 -translate-x-1 group-hover:translate-x-0' %> -->
+      <% end %>
+</div>

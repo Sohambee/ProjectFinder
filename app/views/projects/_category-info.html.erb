@@ -1,0 +1,44 @@
+<%
+  @project_category ||= {
+    name: t('all_categories'),
+    color: 'primary',
+  }
+
+  # We need to explicitly write the full color instead of interpolating it so tailwind can later safely purge the unused css classes.
+  case @project_category[:color]
+  when 'primary'
+    bg_color = 'bg-primary-600'
+  when 'cat-education'
+    bg_color = 'bg-cat-education'
+  when 'cat-social-justice'
+    bg_color = 'bg-cat-social-justice'
+  when 'cat-business-directory'
+    bg_color = 'bg-cat-business-directory'
+  when 'cat-health'
+    bg_color = 'bg-cat-health'
+  when 'cat-wealth'
+    bg_color = 'bg-cat-wealth'
+  when 'secondary'
+    bg_color = 'bg-secondary-600'
+  else
+    bg_color = 'bg-primary-600'
+  end
+%>
+<div class="mx-auto w-full text-center mt-8">
+  <%if @project_category[:name]=="all_categories" %>
+    <div class="rounded-full bg-white w-24 h-24 flex justify-center items-center mx-auto my-4 text-white <%= bg_color %>"><%= inline_svg_pack_tag "media/svgs/category-#{@project_category[:name].parameterize.downcase}.svg", class: 'text-white h-12 w-12' %></div>
+  <% else %>
+    <div class="rounded-full bg-white w-24 h-24 flex mx-auto my-4 text-white" style="background-image: url(<%= @project_category[:url]%>);" ></div>
+  <% end %>
+  <div class="font-bold text-2xl mb-4 text-gray-700"><%= @project_category[:name] %></div>
+  <div class="mb-4 leading-tight text-gray-700"><%= @project_category[:body] %></div>
+</div>
+<% if @project_category[:project_types].present? %>
+  <div class="w-full flex justify-center mb-8 flex-grow-0 flex-shrink-0 flex-wrap">
+    <% @project_category[:project_types].each do |type| %>
+      <div class="inline-block m-1">
+        <%= filter_badge label: type, model: 'projects', filter_by: :project_types, value: type %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

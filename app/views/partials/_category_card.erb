@@ -1,0 +1,22 @@
+<div class='relative border-2 border-black rounded-lg width block hover:shadow-2xl transform transition-all duration-100'>
+ 
+  <div class="w-full text-center pt-5 mb-2 content-center underline font-bold text-xl" ><%= category[:name] %></div>
+  <div class="w-full text-left pl-7 pr-7 mb-1 content-center text-sm leading-tight break-words" style="height: 50px;">
+  <%= category[:body] %>
+    <!-- style="height: 300px; background-image: url(<%= category[:url]%>);" -->
+  </div>
+
+
+  <div class="px-5 pt-5 pb-6">
+    <div class="text-lg font-medium truncate leading-tight mb-1"></div>
+    <div class="text-gray-500 text-sm mb-5 leading-tight overflow-hidden" style="height: 50px;">
+
+     
+    </div>
+    
+    <%= link_to category[:slug], class: 'button relative block hover:bg-primary-500 hover:text-white' do %>
+     <div class=" content-center text-center width-full"><button style="height:30px">Look at Category Projects</button></div>
+     <% end %>
+  </div>
+
+</div>

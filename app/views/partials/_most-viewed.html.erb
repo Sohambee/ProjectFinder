@@ -5,12 +5,12 @@
   %>
   <div class="block sm:flex w-full pt-0 sm:pt-1">
     <div class="w-full text-3xl text-teal-600 mt-4 font-bold">
-      Featured Projects
+      Most Viewed Projects
     </div>
   </div>
 </div>
 
-<div id="featured-project-slider-1" class="w-full px-4 sm:px-0 space-y-bottom-4 sm:grid grid-cols-2 md:grid-cols-3 sm:gap-6">
+<div id="most-view-slider-1" class="w-full px-4 sm:px-0 space-y-bottom-4 sm:grid grid-cols-2 md:grid-cols-3 sm:gap-6">
   <% projects.first(3).each do |project| %>
     <% cache project do %>
       <%= render partial: 'projects/project-card', locals: { project: project, category: category} %>
@@ -18,7 +18,7 @@
   <% end %>
 </div>
 
-<div id="featured-project-slider-2" class="w-full px-4 sm:px-0 space-y-bottom-4 sm:grid grid-cols-2 md:grid-cols-3 sm:gap-6">
+<div id="most-view-slider-2" class="w-full px-4 sm:px-0 space-y-bottom-4 sm:grid grid-cols-2 md:grid-cols-3 sm:gap-6">
   <% projects.last(3).each do |project| %>
     <% cache project do %>
       <%= render partial: 'projects/project-card', locals: { project: project, category: category} %>
@@ -27,7 +27,7 @@
 </div>
 
 <button
-    id="featuredProjectButtonPrev"
+    id="mostViewButtonPrev"
     class="carousel-control-prev absolute top-0 bottom-0 pl-1 left-0 focus:outline-none"
     type="button"
     data-bs-target="#carouselExampleControls"
@@ -38,7 +38,7 @@
 </button>
 
 <button
-    id="featuredProjectButtonNext"
+    id="mostViewButtonNext"
     class="carousel-control-next absolute top-0 bottom-0 p-0 right-0 focus:outline-none"
     type="button"
     data-bs-target="#carouselExampleControls"
@@ -59,14 +59,14 @@
 <script>
 
   $(window).ready(function() {
-    $("#featured-project-slider-2").hide();
-    $("#featuredProjectButtonNext").on('click', function() {
-      $("#featured-project-slider-1").hide();
-      $("#featured-project-slider-2").show(700);
+    $("#most-view-slider-2").hide();
+    $("#mostViewButtonNext").on('click', function() {
+      $("#most-view-slider-1").hide();
+      $("#most-view-slider-2").show(700);
     });
-    $("#featuredProjectButtonPrev").on('click', function() {
-      $("#featured-project-slider-2").hide();
-      $("#featured-project-slider-1").show(700);
+    $("#mostViewButtonPrev").on('click', function() {
+      $("#most-view-slider-2").hide();
+      $("#most-view-slider-1").show(700);
     });
   })
 

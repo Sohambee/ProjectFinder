@@ -37,11 +37,6 @@ Object.keys(themeColors).forEach((themeColor) => {
 
 module.exports = {
   theme: {
-    fontSize: {
-      '8xl': '6rem',
-      '9xl': '7rem',
-      '10xl': '8rem',
-    },
     extend: { 
       backgroundImage: {
         'slide-one': "url('./assets/images/slide-one.jpg')",

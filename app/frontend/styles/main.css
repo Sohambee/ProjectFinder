@@ -1,14 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 /* USE !important to add custom css */
 
 .banner {
-    margin-top: -2.5rem;
     /* background-color: beige; */
     background-image: url('../../../public/giphy.gif');
     background-size: cover;
     background-repeat: no-repeat;
+}
 
+#slider-1 {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#slider-1.hide {
+    opacity: 0;
 }

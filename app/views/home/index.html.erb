@@ -1,9 +1,9 @@
 <!-- Hero -->
-<div class="bg-white">
-  <div class="banner w-screen pt-20 pb-36 mb-24 mt-6 bg-fixed" style="margin-top:">
+<div class="bg-white -mt-6">
+  <div class="banner w-screen pt-36 pb-36 mb-24 bg-fixed">
     <div class="container text-left">
-      <h1 class="object-left text-5xl sm:text-8xl text-white font-bold tracking-tight leading-tight">Find Projects Ideas</h1>
-      <h2 class="sm:text-2xl tracking-tight text-white font-bold leading-tight">We help people find the right projects for them</h2>
+      <h1 class="object-left text-6xl text-white font-bold tracking-tight leading-tight">Find Projects Ideas</h1>
+      <h2 class="text-3xl tracking-tight text-white font-bold leading-tight">We help people find the right projects for them</h2>
       <div class="relative w-1/2 left-0">
         <%= form_with url: projects_path, local: true, method: :get, html: {'x-ref': 'searchForm'} do |form| %>
           <%= form.text_field :query, placeholder: 'Try "website development"', value: params[:query], class: "border-none border-primary-100 p-2 pr-9 mt-4 rounded w-full text-left border-primary-400 h-12 align-bottom text-black outline-none focus:border-primary-600", required: true %>
@@ -24,17 +24,19 @@
       </div>
   </div>
 </div>
-  <!-- Featured projects -->
-  <div class="relative rounded-md container text-center bg-teal-50 z-10 pb-4 px-15 py-10">
-    <%= render partial: 'featured-category', locals: {collection: @project_categories}%>
-    <!-- <%= render partial: 'partials/featured-projects', locals: {title: "Featured Projects",projects: @featured_projects, category: nil} %> -->
+  <div id="mostViewed" class="relative rounded-lg container text-center bg-blue-100 z-10 pb-4 px-15 py-10">
+    <%= render partial: 'partials/most-viewed', locals: {title: "Most Viewed", projects: @most_view_projects, category: nil} %>
   </div>
-  <div class="relative container text-black z-10 pb-4">
+  <br/>
+  <!-- Featured projects -->
+  <div id="featuredCategory" class="relative rounded-lg container text-center bg-blue-200 z-10 pb-4 px-15 py-10">
     <%= render partial: 'partials/featured-projects', locals: {title: "Most Viewed", projects: @most_view_projects, category: nil} %>
   </div>
+  <br/>
   <!-- Project categories -->
-  <div class="relative container z-10 pb-4">
+  <div id="featuredCategory" class="relative rounded-lg container text-center bg-blue-300 z-10 pb-4 px-15 py-10">
     <%= render partial: 'featured-category', locals: {collection: @project_categories}%>
   </div>
-
 </div>
+
+    <!--<%= render partial: 'partials/featured-projects', locals: {title: "Featured Projects",projects: @featured_projects, category: nil} %>-->

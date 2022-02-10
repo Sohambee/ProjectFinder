@@ -24,11 +24,11 @@
     bg_color = 'bg-primary-600'
   end
 %>
-<div class="mx-auto w-full text-center mt-8">
-  <%if @project_category[:name]=="all_categories" %>
-    <div class="rounded-full bg-white w-24 h-24 flex justify-center items-center mx-auto my-4 text-white <%= bg_color %>"><%= inline_svg_pack_tag "media/svgs/category-#{@project_category[:name].parameterize.downcase}.svg", class: 'text-white h-12 w-12' %></div>
+<div class="mx-auto w-full text-center">
+  <%if @project_category[:name]==t('all_categories') %>
+    <div class="rounded-full bg-white w-24 h-24 flex justify-center items-center mx-auto my-6 text-white <%= bg_color %>"><%= inline_svg_pack_tag "media/svgs/category-#{@project_category[:name].parameterize.downcase}.svg", class: 'text-white h-12 w-12' %></div>
   <% else %>
-    <div class="rounded-full bg-white w-24 h-24 flex mx-auto my-4 text-white" style="background-image: url(<%= @project_category[:url]%>);" ></div>
+    <div class="rounded-full bg-white w-24 h-24 flex mx-auto my-6 text-white" style="background-image: url(<%= @project_category[:url]%>);" ></div>
   <% end %>
   <div class="font-bold text-2xl mb-4 text-gray-700"><%= @project_category[:name] %></div>
   <div class="mb-4 leading-tight text-gray-700"><%= @project_category[:body] %></div>

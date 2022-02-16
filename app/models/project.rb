@@ -111,13 +111,13 @@ class Project < ApplicationRecord
   end
 
   def self.get_featured_projects
-    projects_count = Settings.homepage_featured_projects_count
+    projects_count = 6
     Project.where(highlight: true).includes(:project_types, :skills, :volunteers).limit(projects_count).order('RANDOM()')
   end
 
 
   def self.get_most_viewed
-    projects_count = Settings.homepage_featured_projects_count
+    projects_count = 6
     Project.order('views DESC').limit(projects_count)
   end
 end

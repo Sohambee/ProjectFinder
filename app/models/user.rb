@@ -27,12 +27,12 @@ class User < ApplicationRecord
       return true
     end
     project.user_ids.each do |value|
-      if value['email']==self.email
+      if value['username'] == self.username
         return true
       end
+      logger.info value
     end
-
-    false
+    return false
   end
 
   def has_complete_profile?
@@ -61,7 +61,10 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    ADMINS.include?(self.email)
+    admins = Array.new
+    admins.push('soham.bhavsar@hotmail.com')
+    admins.include?(self.email)
+    # ADMINS.include?(self.email)
   end
 
   def to_param
@@ -83,7 +86,7 @@ class User < ApplicationRecord
 
   def getUnread
     conversations = Conversation.where('sender_id = (?) OR recipient_id = (?)', self.id, self.id)
-    unread=0
+    unread = 0
     conversations.each do |convo|
       if !convo.last_message.blank?
         if (convo.last_message.read == false) && (convo.last_message.user_id != self.id)

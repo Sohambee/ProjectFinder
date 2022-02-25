@@ -38,11 +38,6 @@ Object.keys(themeColors).forEach((themeColor) => {
 module.exports = {
   theme: {
     extend: { 
-      backgroundImage: {
-        'slide-one': "url('./assets/images/slide-one.jpg')",
-        'slide-two': "url('../theme/assets/images/slide-two.webp')",
-        'slide-three': "url('../theme/assets/images/slide-three.webp')"
-      },
       colors: {
         smoke: 'rgba(0, 0, 0, 0.5)',
         primary: {

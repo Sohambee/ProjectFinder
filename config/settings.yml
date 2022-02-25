@@ -129,6 +129,28 @@ project_categories:
       - Java
     color: blue 
     url: https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2016/12/Untitled-1-1024x576.png   
+  - name: Blockchain
+    slug: block_chain
+    body: Create blockchain related applications
+    project_types:
+      - Public
+      - Private
+      - Federated
+  - name: Cryptocurrency
+    slug: cryptocurrency
+    body: Create cryptocurrencies or related applications
+    project_types:
+      - PoW
+      - PoS
+      - Tokens
+      - Stablecoins
+  - name: WEB3
+    slug: web3
+    body: Build on the Web 3.0 with the use of blockchain technology
+    project_types:
+      - Blockchain
+      - File Storage
+      - API
 
 
 global_announcements:

@@ -31,16 +31,39 @@ const Project = {
           })
         })
       }
+
+      function onOtherSelect(selectBox) {
+        if ($(selectBox).find(":selected").text().trim().toUpperCase() == "OTHER") {
+          $('.other-input').show();
+        }
+        else {
+          $('.other-input').hide();
+          $('.other-input').val(""); //clear out the value if required
+        }
+      }
+
       $('.not-accepting-volunteers').click(function (ev) {
         Project.notAcceptingVolunteers(this, ev);
       });
 
       $('.volunteer-with-skills').click(function (ev) {
         Project.volunteerWithSkills(this, ev);
+
+        $('#volunteer_note').on('change', function () {
+          if (this.value == "Other") {
+            $('.other-input').show(200);
+          }
+        });
       });
 
       $('.volunteer-without-skills').click(function (ev) {
         Project.volunteerWithSkills(this, ev);
+
+        $('#volunteer_note').on('change', function () {
+          if (this.value == "Other") {
+            $('.other-input').show(200);
+          }
+        });
       });
       $('.send-message').click(function (ev) {
         Project.sendMessage(this, ev);
@@ -131,7 +154,7 @@ const Project = {
     const targetHref = $(that).attr('href');
 
 
-    const headerHTML = "You are going use this project"
+    const headerHTML = "You are going to use this project"
     const bodyHTML = `
       You can enter the reason you are using this project
       <br>
@@ -145,11 +168,17 @@ const Project = {
               <option value="Other">Other</option>
           </select>
         </div>
+        <input id="otherReason" class="other-input mt-4 h-8 w-full pl-3 border rounded" hidden type=text placeholder="Reason" />
       </div>
       `;
 
     const callback = () => {
-      const volunteerNote = $("#volunteer_note").val();
+      let volunteerNote;
+      if ($("#volunteer_note").val()) {
+        volunteerNote = $("#otherReason").val();
+      } else {
+        volunteerNote = $("#volunteer_note").val();
+      }
       $.post(targetHref, { note: volunteerNote });
     }
 

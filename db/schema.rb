@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2021_07_25_233035) do
     t.string "target_location", default: "", null: false
     t.integer "views", default: 0, null: false
     t.string "category", default: [], null: false, array: true
-    t.string "project_initiator", default: "Student", null: false
+    t.string "project_initiator", default: "", null: false
     t.string "image_url", default: ""
     t.jsonb "user_ids", default: [], array: true
   end

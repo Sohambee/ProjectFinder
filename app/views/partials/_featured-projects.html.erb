@@ -4,7 +4,7 @@
     color = project_category.present? ? project_category.color : 'primary'
   %>
   <div class="block sm:flex w-full pt-0 sm:pt-1">
-    <div class="w-full text-3xl text-teal-600 mt-4 font-bold">
+    <div class="w-full text-3xl text-teal-600 mt-4 mb-4 font-bold">
       Featured Projects
     </div>
   </div>
@@ -26,9 +26,18 @@
   <% end %>
 </div>
 
+<ol class="carousel-indicators ">
+			<li class="inline-block mr-3">
+				<label id="fp-indic-1" class="carousel-bullet block text-5xl text-white text-blue-500">•</label>
+			</li>
+			<li class="inline-block mr-3">
+				<label id="fp-indic-2" class="carousel-bullet block text-5xl text-white">•</label>
+			</li>
+</ol>
+
 <button
     id="featuredProjectButtonPrev"
-    class="carousel-control-prev absolute top-0 bottom-0 pl-1 left-0 focus:outline-none"
+    class="carousel-control-prev absolute top-0 bottom-0 left-0 focus:outline-none"
     type="button"
     data-bs-target="#carouselExampleControls"
     data-bs-slide="prev"
@@ -39,7 +48,7 @@
 
 <button
     id="featuredProjectButtonNext"
-    class="carousel-control-next absolute top-0 bottom-0 p-0 right-0 focus:outline-none"
+    class="carousel-control-next absolute top-0 bottom-0 right-0 focus:outline-none"
     type="button"
     data-bs-target="#carouselExampleControls"
     data-bs-slide="next"
@@ -48,7 +57,7 @@
     <span class="visually-hidden"><%= inline_svg_pack_tag 'media/svgs/eva-next.svg', class: 'duration-200 hover:scale-125 inline-block fill-current transform transition-transform duration-100 -translate-x-1 group-hover:translate-x-0' %></span>
 </button>
 
-<div class="w-full mt-4 pb-4 text-center">
+<div class="-ml-2 mt-4 pb-4 text-center">
       <%= link_to projects_path(highlight: true), class: 'text-primary-700 font-bold group' do %>
         <button class="rounded border border-none bg-primary-500 text-white hover:bg-primary-600 transform transition-all duration-100 hover:scale-110 py-3 px-6">See All</button>
       <% end %>
@@ -63,10 +72,14 @@
     $("#featuredProjectButtonNext").on('click', function() {
       $("#featured-project-slider-1").hide();
       $("#featured-project-slider-2").show(700);
+      $("#fp-indic-1").removeClass("text-blue-500");
+      $("#fp-indic-2").addClass("text-blue-500");
     });
     $("#featuredProjectButtonPrev").on('click', function() {
       $("#featured-project-slider-2").hide();
       $("#featured-project-slider-1").show(700);
+      $("#fp-indic-2").removeClass("text-blue-500");
+      $("#fp-indic-1").addClass("text-blue-500");
     });
   })
 

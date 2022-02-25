@@ -1,19 +1,27 @@
-<div class='relative border-2 bg-gray-50 border-black rounded-lg width block hover:shadow-xl transform transition-all duration-200'>
- 
-  <div class="w-full text-center pt-5 mb-2 content-center underline font-bold text-xl" ><%= category[:name] %></div>
-  <div class="w-full text-left pl-7 pr-7 mb-1 content-center text-sm leading-tight break-words" style="height: 50px;">
-  <%= category[:body] %>
-    <!-- style="height: 300px; background-image: url(<%= category[:url]%>);" -->
-  </div>
+<div class='relative h-72 border-2 bg-gray-50 border-black rounded-lg width block hover:shadow-2xl transform transition-all duration-200'>
+  <a>
+    <%= link_to category[:slug], class: 'block transform transition-all duration-100' do %>
 
+        
 
-  <div class="px-5 pt-5 pb-6">
-    <div class="text-lg font-medium truncate leading-tight mb-1"></div>
-    <div class="text-gray-500 text-sm mb-5 leading-tight overflow-hidden" style="height: 50px;"></div>
-    
-    <%= link_to category[:slug], class: 'button relative block hover:bg-primary-500 hover:shadow-none hover:text-white' do %>
-     <div class="content-center text-center width-full"><button style="height:30px">Look at Category Projects</button></div>
-     <% end %>
-  </div>
+        <div class="px-5 pt-5 pb-6">
+          <div class="text-lg text-left ml-2 font-medium truncate leading-tight mb-1"><%= category[:name] %></div>
 
+          <div class="text-gray-500 text-clip text-ellipsis text-left ml-2 text-md leading-tight overflow-hidden">
+            <div class="text-left h-36">
+              <%= category[:body] %>
+            </div>
+          </div>
+          <div class="absolute mt-4 right-0 mr-4">
+            <a>
+              <%= link_to category[:slug], class: 'block transform transition-all duration-100' do %>
+                <div class="">
+                  <button class="rounded border-none py-2 px-4 width-full bg-primary-500 text-white hover:bg-primary-700"><span class="">View project</span></button>
+                </div>
+              <% end %>
+            </a>
+          </div>
+        </div>
+    <%end%>
+  </a>
 </div>

@@ -118,7 +118,7 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         if @project.save
           track_event 'Project creation complete'
-          @project.project_initiator= @current_user.initiator_type
+          @project.project_initiator= @current_user.username
           @project.save!
           format.html { redirect_to @project, notice: I18n.t('project_was_successfully_created') }
           format.json { render :show, status: :created, location: @project }
@@ -181,7 +181,7 @@ class ProjectsController < ApplicationController
     @user= User.where(id: current_user.id)[0]
     @user.project_ids.push(@project.id)
     @user.save!
-    @project.user_ids.push({ id: current_user.id, username: current_user.username, description: params[:note] })
+    @project.user_ids.push({ id: current_user.id, username: current_user.username, description: params[:note], role: current_user.initiator_type })
     @project.save!
 
     flash[:notice] = 'Project added to used'

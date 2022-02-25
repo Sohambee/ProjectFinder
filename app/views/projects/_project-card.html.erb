@@ -1,58 +1,62 @@
-<div class='relative h-72 border-2 bg-gray-50 border-black rounded-lg width block hover:shadow-xl transform transition-all duration-200'>
-  <%
-    category = Settings.project_categories.select { |cat| cat.name == local_assigns[:category] }.first if local_assigns[:category].present?
+<div class='relative h-72 border-2 bg-gray-50 border-black rounded-lg width block hover:shadow-2xl transform transition-all duration-200'>
+  <a>
+    <%= link_to project, class: 'block transform transition-all duration-100' do %>
+        <%
+          category = Settings.project_categories.select { |cat| cat.name == local_assigns[:category] }.first if local_assigns[:category].present?
 
-    category_override = category.present? ? local_assigns[:category] : nil
-  %>
+          category_override = category.present? ? local_assigns[:category] : nil
+        %>
 
-  <div class="px-5 pt-5 pb-6">
-    <div class="text-lg text-left ml-2 font-medium truncate leading-tight mb-1"><%= project.name %></div>
-    <div class="text-gray-500 font-bold text-left ml-2 text-sm mb-3 leading-tight overflow-hidden">
-      <% if project.category.present? %>
-        <%= project.category.first %>
-      <% else %>
-        <%= project.short_description.truncate 150 %>
-      <% end %>
-    </div>
-
-    <div class="text-gray-500 text-left ml-2 text-sm leading-tight overflow-hidden">
-      <% if project.description.present? %>
-          <div class="text-left">
-            <%= project.description %>
-          </div>
-      <% end %>
-    </div>
-   
-    <!--<% if project.project_types.present? %>
-      <div class="relative w-full h-6 mb-4">
-        <span class="scroll-gradient-right inline-block w-4 h-6 absolute right-0 z-50">asdfasdfas</span>
-        <div class="w-full overflow-x-auto scrolling-touch scrollbar-hidden">
-          <div class="flex flex-row flex-no-wrap flex-shrink-0 space-x-right-2">
-            <% project.project_types.each do |type| %>
-              <%= filter_badge label: type %>
+        <div class="px-5 pt-5 pb-6">
+          <div class="text-lg text-left ml-2 font-medium truncate leading-tight mb-1"><%= project.name %></div>
+          <div class="text-gray-500 font-bold text-left ml-2 text-sm mb-3 leading-tight overflow-hidden">
+            <% if project.category.present? %>
+              <%= project.category.first %>
+            <% else %>
+              <%= project.short_description.truncate 150 %>
             <% end %>
-            sdsaffsafasf
+          </div>
+
+          <div class="text-gray-500 text-clip text-ellipsis text-left ml-2 text-sm leading-tight overflow-hidden">
+            <% if project.description.present? %>
+                <div class="text-left h-36">
+                  <%= project.description %>
+                </div>
+            <% end %>
+          </div>
+        
+          <!--<% if project.project_types.present? %>
+            <div class="relative w-full h-6 mb-4">
+              <span class="scroll-gradient-right inline-block w-4 h-6 absolute right-0 z-50">asdfasdfas</span>
+              <div class="w-full overflow-x-auto scrolling-touch scrollbar-hidden">
+                <div class="flex flex-row flex-no-wrap flex-shrink-0 space-x-right-2">
+                  <% project.project_types.each do |type| %>
+                    <%= filter_badge label: type %>
+                  <% end %>
+                  sdsaffsafasf
+                </div>
+              </div>
+            </div>
+          <% end %>-->
+
+          <div class="absolute bottom-0 mb-4 grid grid-cols-2 gap-2 text-left ml-2 text-xs mt-3">
+            <div>
+              <div class="font-bold">
+                <%= project.views =%> view(s)
+              </div>
+              <div class="text-gray-500"><%= time_ago_in_words project.created_at %> ago</div>
+            </div>
+            <div class="grid-cols-2 right-0 gap-2 ml-14 text-right text-xs">
+              <div class="text-lg">
+                <a>
+                  <%= link_to project, class: 'block transform transition-all duration-100' do %>
+                    <div class="content-right text-right width-full"><span class="text-blue-600 hover:text-cyan-700 hover:underline">View project</span></div>
+                  <% end %>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>-->
-
-    <div class="absolute bottom-0 mb-4 grid grid-cols-2 gap-2 text-left ml-2 text-xs mt-3">
-      <div>
-        <div class="font-bold">
-          <%= project.views =%> view(s)
-        </div>
-        <div class="text-gray-500"><%= time_ago_in_words project.created_at %> ago</div>
-      </div>
-      <div class="grid-cols-2 right-0 gap-2 ml-14 text-right text-xs">
-        <div class="text-lg">
-          <a>
-            <%= link_to project, class: 'block transform transition-all duration-100' do %>
-              <div class="content-right text-right width-full"><span class="text-blue-600 hover:text-cyan-700 hover:underline">View project</span></div>
-            <% end %>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+    <%end%>
+  </a>
 </div>

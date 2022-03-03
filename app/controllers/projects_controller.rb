@@ -102,8 +102,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    if is_valid_link(project_params[:image_url])
-      categories =project_params[:category].first().split(',')
+      categories=project_params[:category].first().split(',')
       logger.info categories.first().first()
       projectParams= project_params
       projectParams[:category] = categories
@@ -127,10 +126,6 @@ class ProjectsController < ApplicationController
           format.json { render json: @project.errors, status: :unprocessable_entity }
         end
       end
-    else
-      flash[:error] = 'Invalid URL for image, needs to be unsplash image or empty'
-      redirect_to
-    end
   end
 
   def edit
@@ -139,8 +134,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if is_valid_link(project_params[:image_url])
-
       categories =project_params[:category].first().split(',')
       logger.info categories.first().first()
       projectParams= project_params
@@ -161,10 +154,6 @@ class ProjectsController < ApplicationController
           format.json { render json: @project.errors, status: :unprocessable_entity }
         end
       end
-    else
-      flash[:error] = 'Invalid URL for image, needs to be unsplash image or empty'
-      redirect_to
-    end
   end
 
 
@@ -198,7 +187,7 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.fetch(:project, {}).permit(:name, :description, :docs_and_demo, :links, :short_description, :image, :image_url, category: [])
+      params.fetch(:project, {}).permit(:name, :description, :requirements, :steps, :docs_and_demo, :links, :short_description, :image, :image_url, category: [])
     end
 
     def ensure_owner_or_admin

@@ -30,18 +30,7 @@
           <p class="mt-2 text-sm text-gray-500"><%= t('a_brief_description_about_your_project_max_129_cha') %></p>
         </div>
       </div>
-      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <label for="description" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-          <%= t('describe_your_project') %>
-        </label>
-        <div class="mt-1 sm:mt-0 sm:col-span-2">
-          <div class="max-w-lg flex rounded-md shadow-sm">
-            <%= f.text_area "description", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
-          </div>
-          <p class="mt-2 text-sm text-gray-500"><%= t('write_a_few_sentences_about_what_you_are_making_an') %></p>
-        </div>
-      </div>
-      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+      <!-- <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label for="short_description" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
           Enter an image url 
         </label>
@@ -64,10 +53,9 @@
             <% end %>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="mt-6 sm:mt-5">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
-         
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
@@ -75,20 +63,18 @@
                 </legend>
               </div>
               <div class="w-full">
-                <div class="rounded shadow-md my-2 relative pin-t pin-l w-11/12">
+                <div class="rounded my-2 relative pin-t pin-l w-11/12">
                   <ul class="list-reset w-full">
                     <li class="flex w-full">
                       <input id = "search_categories" type="text" maxlength="30" class="border-2 rounded h-8 w-full">
-                      <button id="addCategory" class="bg-grey-lightest border-grey border-l h-8 w-24 shadow hover:bg-grey-lightest">
+                      <button id="addCategory" class="bg-primary-600 text-white rounded h-8 w-24 ml-4 hover:bg-primary-700">
                         Add
                       </button>
                     </li>
                     <div id="add_search">
-                     
                     </div>
                   </ul>
                 </div>
-               
                 <br>
                 <div >
                   <div >
@@ -97,10 +83,42 @@
                   </div>
                 </div>
               </div>
-          
           </div>
 
            <input type="textbox" id="categoryArr" name="project[category][]" class="hidden" value="<%= @project.category %>" >
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="description" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            <%= t('describe_your_project') %>
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+              <%= f.text_area "description", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+            </div>
+            <p class="mt-2 text-sm text-gray-500"><%= t('write_a_few_sentences_about_what_you_are_making_an') %></p>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="description" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            <%= t('requirements') %>
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+              <%= f.text_area "requirements", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+            </div>
+            <p class="mt-2 text-sm text-gray-500"><%= t('required_tech') %></p>
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <label for="description" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+            <%= t('steps') %>
+          </label>
+          <div class="mt-1 sm:mt-0 sm:col-span-2">
+            <div class="max-w-lg flex rounded-md shadow-sm">
+              <%= f.text_area "steps", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+            </div>
+            <p class="mt-2 text-sm text-gray-500"><%= t('process') %></p>
+          </div>
         </div>
         <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label for="docs_and_demo" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">

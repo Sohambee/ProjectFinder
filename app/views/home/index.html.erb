@@ -8,33 +8,53 @@
         <%= form_with url: projects_path, local: true, method: :get, html: {'x-ref': 'searchForm'} do |form| %>
           <%= form.text_field :query, placeholder: 'Try "website development"', value: params[:query], class: "relative border-none border-primary-100 p-2 pr-9 mt-4 rounded w-full text-left border-primary-400 h-12 align-bottom text-black outline-none focus:border-primary-600 z-0", required: true %>
           <button class="absolute text-white inset-auto right-0 p-2 cursor-pointer border-none shadow-none text-sm bg-primary-600 hover:bg-gray-700 transition duration-75 w-16 rounded-r" style="margin-top: 16px; height: 48px" @click="$refs.searchForm.submit()">
-           <!-- <%= inline_svg_pack_tag 'media/svgs/magnifier.svg' %> -->
-           Search
-         </button>
+            <!-- <%= inline_svg_pack_tag 'media/svgs/magnifier.svg' %> -->
+            Search
+          </button>
         <% end %>
       </div>
       <div class="text-white font-bold text-md mt-4">
         Popular:
         <%= link_to projects_path, class: "" do %>
-        <button class="border-2 font-bold border-white text-sm rounded-full px-3 py-1 hover:bg-white transition duration-300 hover:text-gray-600">Website Design</button>
-        <button class="border-2 font-bold border-white text-sm rounded-full px-3 py-1 hover:bg-white transition duration-300 hover:text-gray-600">Mobile App</button>
-        <button class="border-2 font-bold border-white text-sm rounded-full px-3 py-1 hover:bg-white transition duration-300 hover:text-gray-600">Machine Learning</button>
-        <button class="border-2 font-bold border-white text-sm rounded-full px-3 py-1 hover:bg-white transition duration-300 hover:text-gray-600">Robotics</button>
+          <button class="border-2 font-bold border-white text-sm rounded-full px-3 py-1 hover:bg-white transition duration-300 hover:text-gray-600">Website Design</button>
+          <button class="border-2 font-bold border-white text-sm rounded-full px-3 py-1 hover:bg-white transition duration-300 hover:text-gray-600">Mobile App</button>
+          <button class="border-2 font-bold border-white text-sm rounded-full px-3 py-1 hover:bg-white transition duration-300 hover:text-gray-600">Machine Learning</button>
+          <button class="border-2 font-bold border-white text-sm rounded-full px-3 py-1 hover:bg-white transition duration-300 hover:text-gray-600">Robotics</button>
         <% end %>
       </div>
+    </div>
   </div>
-</div>
-  <!-- Featured projects -->
-  <div id="featuredProjects" class="relative rounded-lg container text-center bg-blue-100 z-10 pb-4 px-15 py-10">
-    <%= render partial: 'partials/featured-projects', locals: {title: "Most Viewed", projects: @featured_projects, category: nil} %>
+  <div class="flex flex-wrap pb-10">
+    <!--Left col-->
+    <div class="w-full md:w-1/2 bg-primary-400 rounded-r-lg" style="height:35rem">
+      <div class="items-center">
+        <h1 class="w-full text-4xl tracking-tight text-white leading-10 font-extrabold sm:text-5xl py-10 pr-10 sm:leading-none md:text-6xl text-right my-auto pl-20">
+          Create your<br> own project!
+        </h1>
+        <div class="text-right text-xl pl-40 pr-10 text-white">You can use this platform to find yourself a project for any use but thats not where we stop. We created this stage for consumers to get together to find ideas and pitch them aswell. You can create projects and publish them for other people to use! All you have to do is create an account and press on 'Create Project' or <a class="font-bold hover:underline cursor-pointer" href="/projects/new">click here.</a></div>
+      </div>
+    </div>
+    <!--Right col-->
+    <div class="w-full md:w-1/2">
+      <div style="max-width: 70%" class="">
+        <img src="images/project.jpeg" class="my-7 rounded-r-lg" alt="">
+      </div>
+    </div>
   </div>
-  <br/>
-  <div id="mostViewed" class="relative rounded-lg container text-center bg-blue-200 z-10 pb-4 px-15 py-10">
-    <%= render partial: 'partials/most-viewed', locals: {title: "Most Viewed", projects: @most_view_projects, category: nil} %>
-  </div>
-  <br/>
-  <!-- Project categories -->
-  <div id="featuredCategory" class="relative rounded-lg container text-center bg-blue-300 z-10 pb-4 px-15 py-10">
-    <%= render partial: 'featured-category', locals: {collection: @project_categories}%>
+  <div>
+    <!-- Featured projects -->
+    <div id="featuredProjects" class="relative rounded-lg container text-center bg-blue-100 z-10 pb-4 px-15 py-10">
+      <%= render partial: 'partials/featured-projects', locals: {title: "Most Viewed", projects: @featured_projects, category: nil} %>
+    </div>
+    <br/>
+    <!-- Most Viewed projects -->
+    <div id="mostViewed" class="relative rounded-lg container text-center bg-blue-200 z-10 pb-4 px-15 py-10">
+      <%= render partial: 'partials/most-viewed', locals: {title: "Most Viewed", projects: @most_view_projects, category: nil} %>
+    </div>
+    <br/>
+    <!-- Project categories -->
+    <div id="featuredCategory" class="relative rounded-lg container text-center bg-blue-300 z-10 pb-4 px-15 py-10">
+      <%= render partial: 'featured-category', locals: {collection: @project_categories}%>
+    </div>
   </div>
 </div>

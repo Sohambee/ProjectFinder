@@ -17,10 +17,9 @@ const Project = {
 
         `)
 
-          $(`#${"c" + temp}`).click((ev) => {
+          $(`#${"c" + temp}`).on('click', (ev) => {
             ev.preventDefault();
             ev.stopPropagation();
-            console.log("hey")
             let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]']+/g, '').replace("/", "").split(",") : []
             let category = $(`${"b" + temp}`).html()
             categories = categories.map((item2) => {
@@ -42,11 +41,11 @@ const Project = {
         }
       }
 
-      $('.not-accepting-volunteers').click(function (ev) {
+      $('.not-accepting-volunteers').on('click', function (ev) {
         Project.notAcceptingVolunteers(this, ev);
       });
 
-      $('.volunteer-with-skills').click(function (ev) {
+      $('.volunteer-with-skills').on('click', function (ev) {
         Project.volunteerWithSkills(this, ev);
 
         $('#volunteer_note').on('change', function () {
@@ -56,7 +55,7 @@ const Project = {
         });
       });
 
-      $('.volunteer-without-skills').click(function (ev) {
+      $('.volunteer-without-skills').on('click', function (ev) {
         Project.volunteerWithSkills(this, ev);
 
         $('#volunteer_note').on('change', function () {
@@ -65,10 +64,10 @@ const Project = {
           }
         });
       });
-      $('.send-message').click(function (ev) {
+      $('.send-message').on('click', function (ev) {
         Project.sendMessage(this, ev);
       });
-      $('.search_button').click(function (ev) {
+      $('.search_button').on('click', function (ev) {
 
         Project.searchImage(this, ev);
       });
@@ -76,19 +75,17 @@ const Project = {
 
         Project.searchCategories(this, e);
       });
-      $('.chooseContent').click(function (ev) {
+      $('.chooseContent').on('click', function (ev) {
 
         Project.chooseCategory(this, ev);
       });
 
-      $('.removeValue').click(function (ev) {
-
+      $('.removeValue').on('click', function (ev) {
         ev.preventDefault();
         ev.stopPropagation();
-        console.log(hey)
       })
 
-      $('#addCategory').click(function (ev) {
+      $('#addCategory').on('click', function (ev) {
         ev.preventDefault();
         ev.stopPropagation();
         let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]']+/g, '').replace("/", "").split(",") : []
@@ -109,7 +106,7 @@ const Project = {
 
         `)
 
-          $(`#${"c" + temp}`).click((ev) => {
+          $(`#${"c" + temp}`).on('click', (ev) => {
             ev.preventDefault();
             ev.stopPropagation();
             console.log($("#categoryArr").val())
@@ -317,7 +314,7 @@ const Project = {
                 `
             )
 
-            $(`#${index}`).click((ev) => {
+            $(`#${index}`).on('click', (ev) => {
               ev.preventDefault();
               ev.stopPropagation();
               let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]'"]+/g, '').replace("/", "").split(",") : []
@@ -339,11 +336,11 @@ const Project = {
       
               `)
 
-                $(`#${"c" + temp}`).click((ev) => {
+                $(`#${"c" + temp}`).on('click', (ev) => {
                   ev.preventDefault();
                   ev.stopPropagation();
-                  console.log("hey")
-                  let categories = JSON.parse($("#categoryArr").val())
+                  console.log($("#categoryArr").val())
+                  let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]'"]+/g, '').replace("/", "").split(",") : []
                   let category = $(`${"b" + temp}`).html()
                   categories = categories.map((item) => {
                     if (item != category) return item
@@ -358,19 +355,11 @@ const Project = {
                 $("#add_search").html("")
               }
             })
-
-
-
-
           })
-
-
         }
       })
     }
   },
-
-
 }
 
 

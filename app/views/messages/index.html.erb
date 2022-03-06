@@ -7,7 +7,7 @@
             <div class="text-2xl mt-2 left-0 border-b border-gray-400 font-thin text-gray-600">CHATS</div>
           </div>
         </div>
-        <div class="mt-2 flex overflow-y-auto h-full w-full" style = "max-height:500px; min-height:500px">
+        <div class="mt-2 flex overflow-y-none h-full w-full" style = "max-height:500px; min-height:500px">
           <div id="allConvos" class="flex flex-col w-full h-full">
             <% @conversations.zip(@users).each do |conversation, user| %>
               <% if conversation.id==@conversation.id%>
@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="flex border-none overflow-y-scroll divide-y mb-8">
-      <div id= "inside_convo" class="flex flex-col overflow-y-scroll p-4 w-full">
+      <div id= "inside_convo" class="flex flex-col overflow-y-none p-4 w-full">
        
         <% @messages.each do |message| %>
           <% if message.body %>

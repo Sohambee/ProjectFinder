@@ -9,4 +9,5 @@
 @import './custom_tailwind.css';
 @import './tailwindcss/utilities.css';
 @import 'flatpickr/dist/flatpickr.css';
+@import '../../../node_modules/trix/dist/trix.css';
 @import 'main.css';

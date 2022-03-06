@@ -9,12 +9,11 @@ class Project < ApplicationRecord
 
   has_many :volunteers, dependent: :destroy
   has_many :volunteered_users, through: :volunteers, source: :user, dependent: :destroy
-
+  has_rich_text :requirements
+  has_rich_text :steps
 
   acts_as_taggable_on :skills
   acts_as_taggable_on :project_types
-
-
 
   pg_search_scope :search, against: %i(name description participants looking_for volunteer_location target_country target_location highlight project_initiator category)
 

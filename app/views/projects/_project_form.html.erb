@@ -93,7 +93,7 @@
           </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <div class="max-w-lg flex rounded-md shadow-sm">
-              <%= f.text_area "description", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+              <%= f.text_area :description, rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
             </div>
             <p class="mt-2 text-sm text-gray-500"><%= t('write_a_few_sentences_about_what_you_are_making_an') %></p>
           </div>
@@ -104,7 +104,9 @@
           </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <div class="max-w-lg flex rounded-md shadow-sm">
-              <%= f.text_area "requirements", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+              <div class="field form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                <%= f.rich_text_area :requirements, rows: 3, required: true %>
+              </div>
             </div>
             <p class="mt-2 text-sm text-gray-500"><%= t('required_tech') %></p>
           </div>
@@ -115,7 +117,9 @@
           </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <div class="max-w-lg flex rounded-md shadow-sm">
-              <%= f.text_area "steps", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+              <div class="field form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                <%= f.rich_text_area :steps, rows: 3, required: true %>
+              </div>
             </div>
             <p class="mt-2 text-sm text-gray-500"><%= t('process') %></p>
           </div>
@@ -154,3 +158,6 @@
         </span>
       </div>
     </div>
+  </div>
+</div>
+

@@ -101,7 +101,7 @@
           <% if @project.category? %>
             <%= simple_format Rinku.auto_link(sanitize(@project.category[0]), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-5 mt-3 text-sm font-extrabold text-gray-600' }, sanitize: false %>
           <% end %>
-          <% if @project.description? %>
+          <% if @project.short_description? %>
             <%= simple_format Rinku.auto_link(sanitize(@project.short_description), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-5 mt-3 text-sm font-normal text-gray-700' }, sanitize: false %>
           <% end %>
           <% if @project.project_type_list.present? %>
@@ -135,7 +135,7 @@
       <div class="sm:col-span-2">
         <div class="bg-white overflow-hidden rounded-lg sm:pb-4 shadow">
           <div class="bg-secondary-100 border-b border-primary-400">
-            <ul class="flex flex-wrap border-b border-gray-200 dark:border-gray-700">
+            <ul class="flex flex-wrap border-b border-gray-200 dark:border-gray-700 list-none">
                 <li class="">
                     <a id="about" aria-current="page" class="active cursor-pointer inline-block py-4 px-4 text-sm font-medium text-center text-blue-600 bg-gray-100 rounded-t active dark:bg-gray-800 dark:text-blue-500">About</a>
                 </li>
@@ -155,28 +155,19 @@
           <div class="p-4 sm:px-6 sm:pt-5 sm:pb-2">
             <div id="content">
               <div id="description">
-                <dt class="text-sm leading-5 font-bold text-gray-800">
-                  <%= t('description') %>
-                </dt>
-                <dd class="mt-2 text-sm leading-5 text-gray-600">
+                <dd class="mt-2 text-sm leading-5 text-gray-700">
                   <%= simple_format Rinku.auto_link(sanitize(@project.description), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-3' }, sanitize: false %>
                 </dd>
               </div>
               <% if current_user %>
                 <div id="requirements" class="hidden">
-                  <dt class="text-sm leading-5 font-bold text-gray-800">
-                    <%= t('requirements') %>
-                  </dt>
-                  <dd class="mt-2 text-sm leading-5 text-gray-600">
-                    <%= simple_format Rinku.auto_link(sanitize(@project.requirements), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-3' }, sanitize: false %>
+                  <dd class="mt-2 text-sm leading-5 text-gray-700">
+                    <%= @project.requirements %>
                   </dd>
                 </div>
                 <div id="process" class="hidden">
-                  <dt class="text-sm leading-5 font-bold text-gray-800">
-                    <%= t('steps') %>
-                  </dt>
-                  <dd class="mt-2 text-sm leading-5 text-gray-600">
-                    <%= simple_format Rinku.auto_link(sanitize(@project.steps), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-3' }, sanitize: false %>
+                  <dd class="mt-2 text-sm leading-5 text-gray-700">
+                    <%= @project.steps %>
                   </dd>
                 </div>
                 <div id="usedByUser" class="hidden">

@@ -108,3 +108,7 @@ gem 'iso_country_codes', '~> 0.7.8'
 
 # JS Translations
 gem 'i18n-js'
+
+gem 'i18n'
+
+gem "rails-i18n"

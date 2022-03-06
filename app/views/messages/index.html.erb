@@ -69,7 +69,7 @@
             <%if message.user_id == current_user.id%>
               <div class="flex justify-end" >
                 <div class="flex items-end space-x-2 justify-end right-0" style = "max-width:600px;">
-                  <div class="bg-blue-700 text-white px-4 py-2 p-100 rounded-lg break-words">
+                  <div class="bg-primary-600 text-white px-4 py-2 p-100 rounded-lg break-words">
                     <%= message.body %>
                   </div>
                 </div>
@@ -94,7 +94,7 @@
         <div class="flex flex-grow bg-gray border-b border-t rounded">
           <%= f.text_field :body, class: "bg-gray text-md text-gray-600 px-4 w-full focus:outline-none", placeholder: "Aa" %>
           <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-          <%= f.submit "SEND", class: "bg-blue-700 hover:bg-primary-700 cursor-pointer text-white labeled submit button" %>
+          <%= f.submit "SEND", class: "bg-primary-700 hover:bg-primary-800 cursor-pointer text-white labeled submit button" %>
         </div>
       <%end%>
     </div>

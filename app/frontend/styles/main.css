@@ -16,3 +16,7 @@
 #slider-1.hide {
     opacity: 0;
 }
+
+ol, ul {
+    list-style: revert;
+}

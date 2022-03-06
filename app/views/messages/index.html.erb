@@ -75,7 +75,7 @@
                 </div>
               </div>
               <div class="flex justify-end mb-2" >
-                <p class="text-xs text-gray-500"><%= message.created_at.to_s().split(" ").first() %></p>
+                <p class="text-xs mb-3 text-gray-500"><%= message.created_at.to_s().split(" ").first() %></p>
               </div>
             <% else %>
               <div class="flex">
@@ -83,7 +83,7 @@
                   <%= message.body %>
                 </div>
               </div>
-              <p class="text-xs text-gray-500 font-thin mb-2"><%= message.created_at.to_s().split(" ").first() %></p>
+              <p class="text-xs text-gray-500 font-thin mb-3"><%= message.created_at.to_s().split(" ").first() %></p>
             <% end %>
           <% end %>
         <% end %>

@@ -75,13 +75,13 @@ const Messages = {
                       inner = `
                     <div class="flex justify-end" >
                     <div class="flex items-end space-x-2 justify-end right-0" style = "max-width:600px;">
-                      <div class="bg-blue-700 text-white px-4 py-2 p-100 rounded-lg break-words">
+                      <div class="bg-primary-600 text-white px-4 py-2 p-100 rounded-lg break-words">
                         ${message.body}
                       </div>
                     </div>
                   </div>
                   <div class="flex justify-end mb-2" >
-                    <p class=" text-xs text-gray-500">${String(message.created_at).split("T")[0]}</p>
+                    <p class=" text-xs mb-3 text-gray-500">${String(message.created_at).split("T")[0]}</p>
                   </div>
                   `
                     }
@@ -92,7 +92,7 @@ const Messages = {
                     ${message.body}
                     </div>
                   </div>
-                  <p class=" text-xs text-gray-500 mb-2">${String(message.created_at).split("T")[0]}</p>
+                  <p class=" text-xs text-gray-500 mb-3">${String(message.created_at).split("T")[0]}</p>
                   `
                     }
                   }

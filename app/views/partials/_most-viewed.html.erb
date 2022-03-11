@@ -28,10 +28,10 @@
 
 <ol class="carousel-indicators ">
 			<li class="inline-block mr-3">
-				<label id="mv-indic-1" class="carousel-bullet block text-5xl text-white text-blue-500">•</label>
+				<label id="mv-indic-1" class="carousel-bullet cursor-pointer block text-5xl text-white text-blue-500">•</label>
 			</li>
 			<li class="inline-block mr-3">
-				<label id="mv-indic-2" class="carousel-bullet block text-5xl text-white">•</label>
+				<label id="mv-indic-2" class="carousel-bullet cursor-pointer block text-5xl text-white">•</label>
 			</li>
 </ol>
 
@@ -69,15 +69,16 @@
 
   $(window).ready(function() {
     $("#most-view-slider-2").hide();
-    $("#mostViewButtonNext").on('click', function() {
+
+    $("#mostViewButtonNext, #mv-indic-2").on('click', function() {
       $("#most-view-slider-1").hide();
-      $("#most-view-slider-2").show(700);
+      $("#most-view-slider-2").show(300);
       $("#mv-indic-1").removeClass("text-blue-500");
       $("#mv-indic-2").addClass("text-blue-500");
     });
-    $("#mostViewButtonPrev").on('click', function() {
+    $("#mostViewButtonPrev, #mv-indic-1").on('click', function() {
       $("#most-view-slider-2").hide();
-      $("#most-view-slider-1").show(700);
+      $("#most-view-slider-1").show(300);
       $("#mv-indic-2").removeClass("text-blue-500");
       $("#mv-indic-1").addClass("text-blue-500");
     });

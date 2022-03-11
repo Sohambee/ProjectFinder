@@ -2,14 +2,34 @@
   <div class="w-full sm:w-auto mx-auto sm:mx-0 overflow-x-auto scrolling-touch scrollbar-hidden sm:overflow-x-auto">
     <div class="flex flex-row space-x-6 flex-no-wrap h-full">
       <% Settings.project_categories.each do |category| %>
-        <span class="submenu-item items-center px-1 pb-4 border-b hover:border-primary-600 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center <%= "submenu-item-active" if @project_category.present? and @project_category.slug == category[:slug] %>">
+        <span class="<%= category.slug %> submenu-item items-center px-1 pb-4 border-b hover:border-primary-600 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center <%= "submenu-item-active" if @project_category.present? and @project_category.slug == category[:slug] %>">
           <%= link_to category.name, "/#{category.slug}" %>
         </span>
         <% is_category = false %>
       <% end %>
-      <span class="submenu-item items-center px-1 pb-4 border-b hover:border-primary-600 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center <%= "submenu-item-active" if @project_category.blank? %>">
+      <span class="all_categories submenu-item items-center px-1 pb-4 border-b hover:border-primary-600 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center <%= "submenu-item-active" if @project_category.blank? %>">
         <%= link_to t('all_categories'), projects_path %>
       </span>
     </div>
   </div>
 </div>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script>
+  $(window).ready(function() {
+    let categories = JSON.parse(`<%= raw Settings.project_categories.to_json %>`);
+    console.log(window.location.pathname.split("/"))
+
+    categories.forEach((value) => {
+      console.log(value.slug);
+      if (window.location.pathname.split("/")[1] == value.slug) {
+        $(`.${value.slug}`).attr('class', 'submenu-item items-center px-1 pb-4 border-b border-primary-600 hover:border-primary-600 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center');
+      } else if (window.location.pathname.split("/")[1] == 'projects') {
+        $(`.all_categories`).attr('class', 'submenu-item items-center px-1 pb-4 border-b border-primary-600 hover:border-primary-600 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center');
+      }
+    })
+  });
+
+</script>
+

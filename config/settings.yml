@@ -1,5 +1,5 @@
 # Main
-site_title: ProjectFinder
+site_title: Experia
 site_subtitle: 'Help students find projects'
 site_url: https://www.helpwithcovid.com
 share_image: https://www.helpwithcovid.com/share-image.png
@@ -55,15 +55,13 @@ volunteers_needed_for_project:
 
 project_types:
   - 'Student'
-  - 'Teacher'
-  - 'Professor'
+  - 'Educator'
   - 'Community Organization'
   - 'Business'
 
 project_initiator:
   - 'Student'
-  - 'Teacher'
-  - 'Professor'
+  - 'Educator'
   - 'Community Organization'
   - 'Business'
 

@@ -2,7 +2,7 @@
 <html class="overflow-x-none">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= content_for(:share_title).present? ? content_for(:share_title)+' | ' : '' %> Help With COVID 19 - a clearing house for projects and volunteers that want to help with the COVID-19 crisis.</title>
+    <title><%= content_for(:share_title).present? ? content_for(:share_title)+' | ' : '' %>Experia</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -35,7 +35,7 @@
     <div class="flex-1">
       <div class="pb-10 header mt-10">
           <% if flash.present? %>
-            <div id="flash" class="flex-grow container fixed mt-20 flex z-50">
+            <div id="flash" class="hidden w-1/5 container fixed mt-20 flex z-50">
               <% flash.each do |type, msg| %>
               <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 shadow-md <%= alert_container_class_for_flash_type type %>" role="alert">
                 <div class="flex">
@@ -64,10 +64,13 @@
   </body>
 
   <script type="text/javascript">
-      $(document).ready(function(){
-        $( "#flash" ).delay(2000).fadeOut('fast', function() {
+      $(document).ready(function() {
+        $("#flash").delay(300).fadeIn('fast', function() {
+          $(this).show();
+        });
+        $( "#flash" ).delay(2000).fadeOut('slow', function() {
           $(this).remove();
         });
-      })
+      });
   </script>
 </html>

@@ -3,14 +3,12 @@ const Messages = {
     var message;
     $(document).on('turbolinks:load', () => {
 
-      console.log(window.location.pathname.split("/"))
       $('#convo').ready(function (ev) {
         var d = $('#inside_convo');
         d.scrollTop(d.prop("scrollHeight"));
         clearInterval(message)
 
         const conversationID = window.location.pathname.split("/")[2]
-        console.log(window.location.pathname.split("/"))
         if (window.location.pathname.split("/")[1] == "conversations") message = setInterval(function () {
 
           if (window.location.pathname.split("/")[1] == "conversations") {
@@ -115,7 +113,6 @@ const Messages = {
     });
 
     $(document).on('page:beforeout', function () {
-      console.log("hey")
       clearInterval(message)
     });
 

@@ -28,10 +28,10 @@
 
 <ol class="carousel-indicators ">
 			<li class="inline-block mr-3">
-				<label id="fc-indic-1" class="carousel-bullet block text-5xl text-white text-blue-500">•</label>
+				<label id="fc-indic-1" class="carousel-bullet cursor-pointer block text-5xl text-white text-blue-500">•</label>
 			</li>
 			<li class="inline-block mr-3">
-				<label id="fc-indic-2" class="carousel-bullet block text-5xl text-white">•</label>
+				<label id="fc-indic-2" class="carousel-bullet cursor-pointer block text-5xl text-white">•</label>
 			</li>
 </ol>
 
@@ -69,15 +69,15 @@
 
   $(window).ready(function() {
     $("#featured-cat-slider-2").hide();
-    $("#featuredCatButtonNext").on('click', function() {
+    $("#featuredCatButtonNext, #fc-indic-2").on('click', function() {
       $("#featured-cat-slider-1").hide();
-      $("#featured-cat-slider-2").show(700);
+      $("#featured-cat-slider-2").show(300);
       $("#fc-indic-1").removeClass("text-blue-500");
       $("#fc-indic-2").addClass("text-blue-500");
     });
-    $("#featuredCatButtonPrev").on('click', function() {
+    $("#featuredCatButtonPrev, #fc-indic-1").on('click', function() {
       $("#featured-cat-slider-2").hide();
-      $("#featured-cat-slider-1").show(700);
+      $("#featured-cat-slider-1").show(300);
       $("#fc-indic-2").removeClass("text-blue-500");
       $("#fc-indic-1").addClass("text-blue-500");
     });

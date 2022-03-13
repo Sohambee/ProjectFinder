@@ -4,7 +4,7 @@
     color = project_category.present? ? project_category.color : 'primary'
   %>
   <div class="block sm:flex w-full pt-0 sm:pt-1">
-    <div class="w-full text-3xl text-teal-600 mt-4 font-bold">
+    <div class="w-full text-3xl text-teal-600 mt-4 mb-4 font-bold">
       Most Viewed Projects
     </div>
   </div>
@@ -68,7 +68,11 @@
 <script>
 
   $(window).ready(function() {
-    $("#most-view-slider-2").hide();
+    if ($("#mv-indic-2").hasClass('text-blue-500')) {
+      $("#most-view-slider-2").show(300);
+    } else {
+      $("#most-view-slider-2").hide();
+    }
 
     $("#mostViewButtonNext, #mv-indic-2").on('click', function() {
       $("#most-view-slider-1").hide();

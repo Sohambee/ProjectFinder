@@ -89,8 +89,8 @@ const Project = {
         ev.preventDefault();
         ev.stopPropagation();
         let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]']+/g, '').replace("/", "").split(",") : []
-
         console.log($("#categoryArr").val())
+        console.log(categories);
         if (!categories.includes($(`#search_categories`).val()) && $(`#search_categories`).val() != "") {
           categories.push($(`#search_categories`).val())
           console.log(categories)
@@ -293,73 +293,73 @@ const Project = {
   },
 
 
-  searchCategories(that, ev) {
+  // searchCategories(that, ev) {
 
 
-    ev.preventDefault();
-    ev.stopPropagation();
+  //   ev.preventDefault();
+  //   ev.stopPropagation();
 
-    let query = $(that).val();
-    if ($(that).is(":focus")) {
-      $.ajax({
-        method: 'GET',
-        url: "/categories/getCategories/" + query,
-        success: function (data) {
+  //   let query = $(that).val();
+  //   if ($(that).is(":focus")) {
+  //     $.ajax({
+  //       method: 'GET',
+  //       url: "/categories/getCategories/" + query,
+  //       success: function (data) {
 
-          let arr = []
-          $("#add_search").html("")
-          data.categories.map((item, index) => {
-            $("#add_search").append(
-              `  <button id=${index} class="p-2 block text-black w-full hover:bg-gray-300 cursor-pointer chooseContent">${item.category}</button>
-                `
-            )
+  //         let arr = []
+  //         $("#add_search").html("")
+  //         data.categories.map((item, index) => {
+  //           $("#add_search").append(
+  //             `  <button id=${index} class="p-2 block text-black w-full hover:bg-gray-300 cursor-pointer chooseContent">${item.category}</button>
+  //               `
+  //           )
 
-            $(`#${index}`).on('click', (ev) => {
-              ev.preventDefault();
-              ev.stopPropagation();
-              let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]'"]+/g, '').replace("/", "").split(",") : []
+  //           $(`#${index}`).on('click', (ev) => {
+  //             ev.preventDefault();
+  //             ev.stopPropagation();
+  //             let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]'"]+/g, '').replace("/", "").split(",") : []
 
 
-              console.log(categories)
-              if (!categories.includes($(`#${index}`).html())) {
-                categories.push($(`#${index}`).html())
-                console.log(categories)
-                $("#categoryArr").val(categories)
-                let temp = window.localStorage.getItem("inc") || 0
-                $("#categories").append(`
-                    <div id= ${"d" + temp} class="mb-8 w-auto">
-                      <div class="flex items-center h-5">
-                          <label id=${"b" + temp} class="font-medium mr-6 text-gray-700">Category: ${$(`#${index}`).html()}</label>
-                          <button id=${"c" + temp} style = "max-height:40px;"  class="p-2 block text-black bg-red-100 hover:bg-gray-300 cursor-pointer removeValue" > Remove</button>
-                      </div>
-                    </div>  
+  //             console.log(categories)
+  //             if (!categories.includes($(`#${index}`).html())) {
+  //               categories.push($(`#${index}`).html())
+  //               console.log(categories)
+  //               $("#categoryArr").val(categories)
+  //               let temp = window.localStorage.getItem("inc") || 0
+  //               $("#categories").append(`
+  //                   <div id= ${"d" + temp} class="mb-8 w-auto">
+  //                     <div class="flex items-center h-5">
+  //                         <label id=${"b" + temp} class="font-medium mr-6 text-gray-700">Category: ${$(`#${index}`).html()}</label>
+  //                         <button id=${"c" + temp} style = "max-height:40px;"  class="p-2 block text-black bg-red-100 hover:bg-gray-300 cursor-pointer removeValue" > Remove</button>
+  //                     </div>
+  //                   </div>  
       
-              `)
+  //             `)
 
-                $(`#${"c" + temp}`).on('click', (ev) => {
-                  ev.preventDefault();
-                  ev.stopPropagation();
-                  console.log($("#categoryArr").val())
-                  let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]'"]+/g, '').replace("/", "").split(",") : []
-                  let category = $(`${"b" + temp}`).html()
-                  categories = categories.map((item) => {
-                    if (item != category) return item
-                  })
-                  $("#categoryArr").val(categories)
-                  $(`#${"d" + temp}`).remove()
-                })
+  //               $(`#${"c" + temp}`).on('click', (ev) => {
+  //                 ev.preventDefault();
+  //                 ev.stopPropagation();
+  //                 console.log($("#categoryArr").val())
+  //                 let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]'"]+/g, '').replace("/", "").split(",") : []
+  //                 let category = $(`${"b" + temp}`).html()
+  //                 categories = categories.map((item) => {
+  //                   if (item != category) return item
+  //                 })
+  //                 $("#categoryArr").val(categories)
+  //                 $(`#${"d" + temp}`).remove()
+  //               })
 
-                window.localStorage.setItem("inc", parseInt(temp) + 1)
-                $('#search_categories').val("")
-                $('#search_categories').blur();
-                $("#add_search").html("")
-              }
-            })
-          })
-        }
-      })
-    }
-  },
+  //               window.localStorage.setItem("inc", parseInt(temp) + 1)
+  //               $('#search_categories').val("")
+  //               $('#search_categories').blur();
+  //               $("#add_search").html("")
+  //             }
+  //           })
+  //         })
+  //       }
+  //     })
+  //   }
+  // },
 }
 
 

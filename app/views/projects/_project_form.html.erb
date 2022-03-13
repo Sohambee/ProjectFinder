@@ -56,13 +56,23 @@
       </div> -->
       <div class="mt-6 sm:mt-5">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
-            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+            <div class="sm:grid sm:grid-cols-3 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
                   Project Categories
                 </legend>
               </div>
-              <div class="w-full">
+              <div class="ml-2">
+                <% Settings.project_categories.each do |category| %>
+                  <input type="checkbox" id="<%= category.name %>" name="<%= category.name %>" value="<%= category.name %>">
+                  <label class="ml-2" for="<%= category.name %>"><%= category.name %></label><br>
+                <% end %>
+              </div>
+              <div>
+                <input class="hidden" type="textbox" id="categoryArr" name="project[category][]" class="" value="<%= @project.category %>" >
+              </div>
+
+              <!-- <div class="w-full">
                 <div class="rounded my-2 relative pin-t pin-l w-11/12">
                   <ul class="list-reset w-full">
                     <li class="flex w-full">
@@ -84,8 +94,7 @@
                 </div>
               </div>
           </div>
-
-           <input type="textbox" id="categoryArr" name="project[category][]" class="hidden" value="<%= @project.category %>" >
+          <input type="textbox" id="categoryArr" name="project[category][]" class="hidden" value="<%= @project.category %>" > -->
         </div>
         <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label for="description" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
@@ -160,4 +169,38 @@
     </div>
   </div>
 </div>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<script>
+  $(window).ready(function() {
+    let categories = []; //define categories array
+    if (window.location.pathname.includes("edit")) {
+      let c = $("#categoryArr").val(); //take values of element and set to c
+      $("#categoryArr").val(c) //set c to the values of the element
+      $('input[type=checkbox]').each(function () { //for each checkbox
+        if (c.includes(this.value)) { //if the stored array c includes the category then check the box
+          $(this).prop('checked', true); //check the box
+          categories.push(this.value); //add the stored element to the category
+        }
+      });
+    }
+
+    $('input[type=checkbox]').change(function () {
+      if ($(this).is(':checked')) {
+            categories.push(this.value);
+            $("#categoryArr").val(categories)
+      } else {
+        const index = categories.indexOf(this.value);
+        if (index > -1) {
+          categories.splice(index, 1);
+        }
+        $("#categoryArr").val(categories)
+      }
+    });
+  });
+
+</script>
+
 

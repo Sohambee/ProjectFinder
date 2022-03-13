@@ -68,7 +68,12 @@
 <script>
 
   $(window).ready(function() {
-    $("#featured-project-slider-2").hide();
+    if ($("#fp-indic-2").hasClass('text-blue-500')) {
+      $("#featured-project-slider-2").show(300);
+    } else {
+      $("#featured-project-slider-2").hide();
+    }
+
     $("#featuredProjectButtonNext, #fp-indic-2").on('click', function() {
       $("#featured-project-slider-1").hide();
       $("#featured-project-slider-2").show(300);

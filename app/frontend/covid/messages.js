@@ -28,9 +28,9 @@ const Messages = {
                   let link = ""
 
                   if (item.id == conversationID)
-                    classname = "px-2 divide-y flex space-x-2 border rounded overflow-hidden outline-none focus:outline-none bg-gray-200 w-60"
+                    classname = "px-2 divide-y flex space-x-2 border rounded overflow-hidden outline-none focus:outline-none bg-gray-200 w-24 sm:w-60"
                   else
-                    classname = "px-2 divide-y bg-white-100 overflow-hidden flex space-x-2 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 w-60"
+                    classname = "px-2 divide-y bg-white-100 overflow-hidden flex space-x-2 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 w-24 sm:w-60"
 
                   link = `/conversations/${item.id}/messages`
 

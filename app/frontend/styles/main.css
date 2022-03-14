@@ -24,9 +24,7 @@ ol, ul {
 .slider {
     list-style: none;
     position: relative;
-    width: 200000em;
     padding: 3.75rem;
     min-height: 650px;
-    max-height: 650px;
     transition: visibility 0s, opacity 0.5s linear;
 }

@@ -12,12 +12,12 @@
     <% end %>
  
 <% end %>
-<%= link_to projects_path, class: "#{all_projects_nav_link_class(variant)} text-md font-bold" do %>
+<%= link_to projects_path, class: "#{all_projects_nav_link_class(variant)} text-md" do %>
   <%= t('browse_projects') %>
 <% end %>
 <% if current_user %>
   <div class="relative group flex black">
-    <%= link_to 'javascript:void(0);', class: "#{nav_link_inactive_class(variant)} hidden md:flex text-md font-bold" do %>
+    <%= link_to 'javascript:void(0);', class: "#{nav_link_inactive_class(variant)} hidden md:flex text-md" do %>
       <%= t('account') %> <%= inline_svg_pack_tag 'media/svgs/chevron-right.svg', class: 'fill-current text-gray-600 transform rotate-90' %>
     <% end %>
     <div class="md:hidden md:group-hover:flex w-full md:flex-col md:absolute md:z-30 md:nset-auto md:left-0 md:bg-white md:shadow-lg md:p-4 md:w-48 md:text-sm md:space-y-2 md:mt-14">
@@ -39,7 +39,7 @@
     </div>
   </div>
 <% else %>
-  <%= link_to new_user_session_path, class: "#{login_nav_link_class(variant)} font-bold" do %>
+  <%= link_to new_user_session_path, class: "#{login_nav_link_class(variant)}" do %>
     <%= t('log_in') %>
   <% end %>
 <% end %>

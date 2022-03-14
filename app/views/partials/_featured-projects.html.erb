@@ -1,10 +1,10 @@
-<div class="flex mb-4 px-4">
+<div class="flex mb-4 sm:px-4">
   <%
     project_category = Settings.project_categories.select { |cat| cat.name == category }.first
     color = project_category.present? ? project_category.color : 'primary'
   %>
   <div class="block sm:flex w-full pt-0 sm:pt-1">
-    <div class="w-full text-3xl text-teal-600 mt-4 mb-4 font-bold">
+    <div class="w-full text-3xl text-left ml-4 sm:ml-0 sm:text-center text-teal-600 sm:mt-4 sm:mb-4 font-bold">
       Featured Projects
     </div>
   </div>
@@ -26,7 +26,7 @@
   <% end %>
 </div>
 
-<ol class="carousel-indicators ">
+<ol class="carousel-indicators">
 			<li class="inline-block mr-3">
 				<label id="fp-indic-1" class="carousel-bullet cursor-pointer block text-5xl text-white text-blue-500">•</label>
 			</li>

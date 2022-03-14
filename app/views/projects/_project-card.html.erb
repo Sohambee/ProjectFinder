@@ -1,4 +1,4 @@
-<div class='relative h-72 border-2 bg-gray-50 border-black rounded-lg width block hover:shadow-2xl transform transition-all duration-200'>
+<div class='relative h-80 border-2 bg-gray-50 border-black rounded-lg width block hover:shadow-2xl transform transition-all duration-200'>
   <a>
     <%= link_to project, class: 'block transform transition-all duration-100' do %>
         <%
@@ -37,18 +37,18 @@
             </div>
           <% end %>-->
 
-          <div class="absolute bottom-0 mb-4 grid grid-cols-2 gap-2 text-left ml-2 text-xs mt-3">
+          <div class="absolute bottom-0 mb-4 grid grid-cols-2 gap-2 text-left ml-2 text-xs">
             <div>
               <div class="font-bold">
                 <%= project.views =%> view(s)
               </div>
               <div class="text-gray-500"><%= time_ago_in_words project.created_at %> ago</div>
             </div>
-            <div class="grid-cols-2 right-0 gap-2 ml-14 text-right text-xs">
+            <div class="grid-cols-2 right-0 gap-2 ml-8 sm:ml-8 md:ml-14 text-xs">
               <div class="text-lg">
                 <a>
                   <%= link_to project, class: 'block transform transition-all duration-100' do %>
-                    <div class="content-right text-right width-full"><span class="text-blue-600 hover:text-cyan-700 hover:underline">View project</span></div>
+                    <div class="content-right width-full"><span class="text-blue-600 hover:text-cyan-700 hover:underline">View project</span></div>
                   <% end %>
                 </a>
               </div>

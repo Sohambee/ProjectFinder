@@ -2,10 +2,10 @@
   <div class="container">
     <div class="relative flex justify-between text-lg h-20 px-4 sm:px-0">
       <a href="/" class="text-gray-600 hover:text-white-100 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out flex items-center px-2 cursor-pointer -mx-2">
-        <div class="ml-2 mt-1 sm:ml-0 h-8 w-10">
-            <%= inline_svg_pack_tag 'media/svgs/logo.svg', class: 'inline-block h-6 text-primary-500 fill-current -mr-1' %>
+        <div class="pl-3 font-bold ml-2 mt-1 sm:ml-0 h-8 w-10">
+            <%= inline_svg_pack_tag 'media/svgs/logo.svg', class: 'inline-block font-bold h-6 text-primary-500 fill-current -mr-1' %>
         </div>
-        <span class="mx-1 pr-2 block font-bold text-primary-700 leading-tight"><%= Settings.site_title %></span>
+        <span class="pr-2 block font-thin text-primary-700 leading-tight"><%= Settings.site_title %></span>
       </a>
       <div id="search" class="pt-2 ml-10 mt-3 hidden justify-items-stretch relative mx-auto text-gray-600">
         <%= form_with url: projects_path, local: true, method: :get, html: {'x-ref': 'searchForm'} do |form| %>
@@ -35,7 +35,7 @@
     </div>
   </div>
   <div :class="{'block': open, 'hidden': !open}" class="hidden md:hidden">
-    <div class="pt-2 pb-3"><%= render partial: 'layouts/nav_links', locals: { variant: 'MOBILE' } %>
+    <div class="pt-2 pb-3 mr-2 text-right"><%= render partial: 'layouts/nav_links', locals: { variant: 'MOBILE' } %>
     </div>
   </div>
 </nav>
@@ -46,10 +46,12 @@
   $(window).ready(function() {
     $(window).scroll(function() {
       var scrollTop = $(window).scrollTop();
-      if (scrollTop >= 300) {
-        $("#search").fadeIn(300);
-      } else {
-        $("#search").fadeOut(300);
+      if ($(window).width() > 1024) {
+        if (scrollTop >= 300) {
+          $("#search").fadeIn(300);
+        } else {
+          $("#search").fadeOut(300);
+        }     
       }
     });
   });

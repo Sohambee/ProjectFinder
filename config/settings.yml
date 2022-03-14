@@ -99,7 +99,7 @@ project_categories:
       - Robotic Arms
       - Automation
     color: yellow
-    url: https://acim.nidec.com/motors/motion-control/-/media/motioncontrol/images/industries/robotics/robotics-collage-final.ashx
+    url: https://www.automate.org/userAssets/riaUploads/image/Robotics%20101%20An%20Overview%20of%20Robots%20in%20Industry%20for%20Beginners.jpeg
   - name: Application Development
     slug: application
     body: Develop Applications
@@ -108,7 +108,7 @@ project_categories:
       - Java
       - C++
     color: green
-    url: https://www.concettolabs.com/blog/wp-content/uploads/2017/08/desktop-app-development.png
+    url: https://appinventiv.com/wp-content/uploads/sites/1/2017/10/Ways-in-Which-Web-Application-Development-is-Changing.png
   - name: Web Development
     slug: web_development
     body: Create full stack websites
@@ -117,7 +117,7 @@ project_categories:
       - CSS
       - HTML
     color: blue
-    url: https://seo-trench.com/wp-content/uploads/2019/11/12-Websites-You-Should-Check-Out-to-Learn-Web-Development-Fast.png
+    url: https://www.reachfirst.com/wp-content/uploads/2018/08/Web-Development.jpg
   - name: Mobile Development
     slug: mobile_development
     body: Create mobile application
@@ -126,7 +126,7 @@ project_categories:
       - Dart
       - Java
     color: blue 
-    url: https://spzone-simpleprogrammer.netdna-ssl.com/wp-content/uploads/2016/12/Untitled-1-1024x576.png   
+    url: https://sharpsheets.io/blog/wp-content/uploads/2021/10/mobile-app-development-guide-scaled-1.jpeg   
   - name: Blockchain
     slug: block_chain
     body: Create blockchain related applications
@@ -134,6 +134,8 @@ project_categories:
       - Public
       - Private
       - Federated
+    color: blue
+    url: https://www.ibm.com/blogs/blockchain/wp-content/uploads/2019/12/Retina_Display-758591537.jpg
   - name: Cryptocurrency
     slug: cryptocurrency
     body: Create cryptocurrencies or related applications
@@ -142,6 +144,8 @@ project_categories:
       - PoS
       - Tokens
       - Stablecoins
+    color: blue
+    url: https://penntoday.upenn.edu/sites/default/files/2022-01/cryptocurrency-main.jpg
   - name: WEB3
     slug: web3
     body: Build on the Web 3.0 with the use of blockchain technology
@@ -150,6 +154,8 @@ project_categories:
       - File Storage
       - API
       - DAAP
+    color: blue
+    url: https://thevrsoldier.com/wp-content/uploads/2022/01/what-is-web3-how-to-invest.jpg
 
 
 global_announcements:

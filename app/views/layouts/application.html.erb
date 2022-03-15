@@ -65,12 +65,16 @@
 
   <script type="text/javascript">
       $(document).ready(function() {
-        $("#flash").delay(300).fadeIn('fast', function() {
-          $(this).show();
-        });
-        $( "#flash" ).delay(2000).fadeOut('slow', function() {
-          $(this).remove();
-        });
+        if ($(window).width() > 1024) {
+          $("#flash").delay(300).fadeIn('fast', function() {
+            $(this).show();
+          });
+          $( "#flash" ).delay(2000).fadeOut('slow', function() {
+            $(this).remove();
+          });
+        } else {
+          $( "#flash" ).hide();
+        }
       });
   </script>
 </html>

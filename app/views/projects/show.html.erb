@@ -32,7 +32,7 @@
         <div class="flex justify-left mt-3 text-sm leading-5">
           <%= link_to toggle_project_highlight_path(project_id: @project.id), method: :post do %>
             <span class="inline-flex rounded-md shadow-sm mt-4">
-              <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+              <button type="button" class="relative inline-flex items-center px-2 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
                 <span>
                   <% if @project.highlight %>
                     Remove highlight
@@ -45,12 +45,20 @@
           <% end %>
           <%= link_to edit_project_path(project_id: @project.id) do %>
             <span class="ml-6 inline-flex rounded-md shadow-sm mt-4">
-              <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+              <button type="button" class="relative inline-flex items-center px-2 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
                 <span>
                   Edit project
                 </span>
               </button>
             </span>
+          <% end %>
+          <%= link_to project_path(project_id: @project.id), method: :delete, data: { confirm: "Are you sure you want to delete this project?" } do %>
+            <button type="button" class="relative inline-flex items-center px-2 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+              <span>
+                Delete project
+              </span>
+            </button>
+          <% end %>
           <% end %>
         </div>
       </div>
@@ -85,7 +93,7 @@
                         </button>
                       <% end %>
                     <% end %>
-                    <% if @project.can_edit?(current_user) %>
+                    <% if @project.can_edit?(current_user) && !current_user.is_admin?%>
                     <%= link_to project_path(project_id: @project.id), method: :delete, data: { confirm: "Are you sure you want to delete this project?" } do %>
                         <button type="button" class="relative ml-2 sm:mt-1 mt-2 inline-flex items-center sm:px-4 sm:py-2 px-3 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
                           <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">

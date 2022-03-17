@@ -1,6 +1,6 @@
   <% if current_user.blank? %>
     <%= link_to new_user_registration_path do %>
-      <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
+      <button type="button" class="relative mb-2 inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
         <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
         </svg>
@@ -12,7 +12,7 @@
   <% else %>
     <% if !current_user.used_project?(@project) %>
       <%= link_to toggle_volunteer_project_path, class: "volunteer-with-skills", "x-project-name": @project.name do %>
-        <button id="volunteers-filled-btn" type="button" class="relative mr-2 inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline-primary- focus:border-primary-700 active:bg-primary-700">
+        <button id="volunteers-filled-btn" type="button" class="relative mr-2 inline-flex items-center sm:px-4 sm:py-2 px-3 py-2 border border-transparent text-sm leading-5 font-medium rounded text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline-primary- focus:border-primary-700 active:bg-primary-700">
           <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
             <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
           </svg>
@@ -24,7 +24,7 @@
     <% end %>
      <% if current_user.id != @project.user_id %>
     <%= link_to new_conversation_path(sender_id: current_user.id, recipient_id: @project.user_id), class: "send-messag", "reciever_id": @project.user_id,  "sender_id": current_user.id do %>
-      <button id="volunteers-filled-btn" type="button" class="relative mr-2 inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline-primary- focus:border-primary-700 active:bg-primary-700">
+      <button id="volunteers-filled-btn" type="button" class="relative sm:mt-1 mt-2 mr-2 inline-flex items-center sm:px-4 sm:py-2 px-3 py-2 border border-transparent text-sm leading-5 font-medium rounded text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline-primary- focus:border-primary-700 active:bg-primary-700">
         <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
           <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
         </svg>

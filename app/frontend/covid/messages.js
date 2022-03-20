@@ -72,25 +72,29 @@ const Messages = {
                     if (message.user_id == data.user) {
                       inner = `
                     <div class="flex justify-end" >
-                    <div class="flex items-end space-x-2 justify-end right-0" style = "max-width:600px;">
-                      <div class="bg-primary-600 text-white px-4 py-2 p-100 rounded-lg break-words">
-                        ${message.body}
+                      <div class="flex items-end space-x-2 justify-end right-0" style = "max-width:600px;">
+                        <div class="bg-primary-600 text-white px-4 py-2 p-100 rounded-lg break-words">
+                          ${message.body}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="flex justify-end mb-2" >
-                    <p class=" text-xs mb-3 text-gray-500">${String(message.created_at).split("T")[0]}</p>
-                  </div>
+                    <div class="flex justify-end mb-5" >
+                      <p class=" text-xs mb-3 text-gray-500">${String(message.created_at).split("T")[0]}</p>
+                    </div>
                   `
                     }
                     else {
                       inner = `
-                    <div class="flex">
-                    <div class="bg-gray-200 text-black px-4 py-2 w-auto rounded-lg text-white break-words" style = "max-width:800px;">
-                    ${message.body}
+                    <div class="flex justify-start">
+                      <div class="flex items-start space-x-2 justify-start right-0" style = "max-width:600px;">
+                        <div class="bg-gray-200 text-black px-4 py-2 w-auto rounded-lg text-white break-words" style = "max-width:600px;">
+                        ${message.body}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <p class=" text-xs text-gray-500 mb-3">${String(message.created_at).split("T")[0]}</p>
+                    <div class="flex justify-start mb-5">
+                      <p class="text-xs text-gray-500 mb-3">${String(message.created_at).split("T")[0]}</p>
+                    </div>
                   `
                     }
                   }
@@ -102,7 +106,7 @@ const Messages = {
             })
           }
 
-        }, 5000);
+        }, 2000);
       });
 
 

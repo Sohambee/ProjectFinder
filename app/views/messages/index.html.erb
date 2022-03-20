@@ -96,7 +96,7 @@
     <div class="absolute place-items-center w-full bottom-0 border-none justify-between">
       <%= form_for [@conversation, @message] do |f| %>
         <div class="flex flex-grow bg-gray border-b border-t rounded">
-          <%= f.text_field :body, class: "bg-gray text-md text-gray-600 px-4 w-full focus:outline-none", placeholder: "Aa" %>
+          <%= f.text_field :body, id: "messageBox", class: "bg-gray text-md text-gray-600 px-4 w-full focus:outline-none", placeholder: "Aa" %>
           <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
           <%= f.submit "SEND", class: "bg-primary-700 hover:bg-primary-800 cursor-pointer text-white labeled submit button" %>
         </div>
@@ -104,3 +104,9 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $("#messageBox").focus();
+    });
+</script>

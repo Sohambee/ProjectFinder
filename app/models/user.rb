@@ -62,6 +62,9 @@ class User < ApplicationRecord
 
   def is_admin?
     ADMINS.include?(self.email)
+    admins = Array.new
+    admins.push("soham.bhavsar@hotmail.com")
+    admins.include?(self.email)
   end
 
   def to_param

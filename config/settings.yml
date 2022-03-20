@@ -156,6 +156,15 @@ project_categories:
       - DAAP
     color: blue
     url: https://thevrsoldier.com/wp-content/uploads/2022/01/what-is-web3-how-to-invest.jpg
+  - name: Hardware
+    slug: hardware
+    body: Create projects with the use of materials and supplies
+    project_types:
+      - Embedded
+      - Sensors
+      - RFID
+    color: blue
+    url: https://learn.g2.com/hubfs/hardware-vs-software.jpg
 
 
 global_announcements:

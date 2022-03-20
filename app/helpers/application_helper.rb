@@ -6,9 +6,9 @@ module ApplicationHelper
   def nav_link_active_class(variant = 'DESKTOP')
     case variant
     when 'DESKTOP'
-      'inline-flex items-center px-1 pt-1 border-b-2 border-primary-600 text-sm leading-5 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center font-bold'
+      'inline-flex items-center px-1 pt-1 border-b-2 border-primary-600 text-sm leading-5 text-gray-600 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center font-bold'
     when 'MOBILE'
-      'mt-1 block pl-3 pr-4 py-2 border-l-4 border-primary-600 text-base text-primary-700 bg-primary-50 focus:outline-none focus:text-primary-800 focus:bg-primary-100 focus:border-primary-700 transition duration-150 ease-in-out'
+      'mt-1 block pl-3 pr-4 py-2 border-l-4 border-primary-600 text-base text-primary-600 bg-primary-50 focus:outline-none focus:text-primary-800 focus:bg-primary-100 focus:border-primary-700 transition duration-150 ease-in-out'
     end
   end
 

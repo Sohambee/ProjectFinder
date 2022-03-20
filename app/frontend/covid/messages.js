@@ -51,8 +51,8 @@ const Messages = {
                   let inner = `
                   <a href=${link} class="${classname} outline-none">
                     <button>
-                    <div class=" flex flex-col items-start " style = "max-height:61px; text-overflow: ellipsis;">
-                      <div class="text-lg font-extralight" >
+                    <div class="flex flex-col items-start" style="max-height:61px; text-overflow: ellipsis;">
+                      <div class="text-lg font-extralight">
                         ${user}
                       </div>
                       <div class="flex text-xs space-x-1 truncate">
@@ -78,8 +78,8 @@ const Messages = {
                         </div>
                       </div>
                     </div>
-                    <div class="flex justify-end mb-5" >
-                      <p class=" text-xs mb-3 text-gray-500">${String(message.created_at).split("T")[0]}</p>
+                    <div class="flex justify-end">
+                      <p class="text-xs mb-2 text-gray-500 font-thin">${String(message.created_at).split("T")[0]}</p>
                     </div>
                   `
                     }
@@ -92,8 +92,8 @@ const Messages = {
                         </div>
                       </div>
                     </div>
-                    <div class="flex justify-start mb-5">
-                      <p class="text-xs text-gray-500 mb-3">${String(message.created_at).split("T")[0]}</p>
+                    <div class="flex justify-start">
+                      <p class="text-xs text-gray-500 mb-2">${String(message.created_at).split("T")[0]}</p>
                     </div>
                   `
                     }

@@ -29,6 +29,7 @@ class ConversationsController < ApplicationController
       redirect_to conversation_messages_path(@conversation)
     else
       flash[:notice]='You have no conversations'
+      redirect_to "/"
     end
   end
 

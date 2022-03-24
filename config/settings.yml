@@ -163,6 +163,7 @@ project_categories:
       - Embedded
       - Sensors
       - RFID
+      - Microcontrollers
     color: blue
     url: https://learn.g2.com/hubfs/hardware-vs-software.jpg
 

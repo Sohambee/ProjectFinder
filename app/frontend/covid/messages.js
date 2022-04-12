@@ -21,7 +21,6 @@ const Messages = {
                 arr = data.conversations.map((item) => {
                   messArr = data.messages
                   let lastMessage = messArr.slice(-1)
-                  console.log(lastMessage)
                   let user = ""
                   let innerInfor = ""
                   let classname = ""
@@ -37,15 +36,14 @@ const Messages = {
                   if (item.sender_id == data.user) user = item.reciever_name
                   else user = item.sender_name
 
-
                   if (item.body) {
                     if (item.read || item.user_id == data.user) {
                       if (item.user_id == data.user) {
-                        innerInfor = `<div>You: ${item.body.slice(0, 22)} | ${String(lastMessage[0].created_at).split("T")[0]}</div>`
+                        innerInfor = `<div>You: ${item.body.slice(0, 22)} | ${String(item.messagecreatedat).split("T")[0]}</div>`
                       } else {
-                        innerInfor = `<div>${item.body.slice(0, 22)} | ${String(lastMessage[0].created_at).split("T")[0]}</div>`
+                        innerInfor = `<div>${item.body.slice(0, 22)} | ${String(item.messagecreatedat).split("T")[0]}</div>`
                       }
-                    } else innerInfor = `<div class="font-bold">${item.body.slice(0, 22)} | ${String(lastMessage[0].created_at).split("T")[0]}</div>`
+                    } else innerInfor = `<div class="font-bold">${item.body.slice(0, 22)} | ${String(item.messagecreatedat).split("T")[0]}</div>`
                   } else innerInfor = `<div>No messages exchanged!</div>`
 
                   let inner = `
@@ -67,6 +65,10 @@ const Messages = {
                 })
 
                 messArr = data.messages.map((message) => {
+                  let dateArr = new Date(message.created_at).toLocaleDateString('en-US',
+                    { hour12: true, hour: 'numeric', minute: 'numeric' }
+                  );
+
                   let inner = ""
                   if (message.body) {
                     if (message.user_id == data.user) {
@@ -79,7 +81,7 @@ const Messages = {
                       </div>
                     </div>
                     <div class="flex justify-end">
-                      <p class="text-xs mb-2 text-gray-500 font-thin">${String(message.created_at).split("T")[0]}</p>
+                      <p class="text-xs mb-2 text-gray-500 font-thin">${dateArr}</p>
                     </div>
                   `
                     }
@@ -93,7 +95,7 @@ const Messages = {
                       </div>
                     </div>
                     <div class="flex justify-start">
-                      <p class="text-xs text-gray-500 mb-2">${String(message.created_at).split("T")[0]}</p>
+                      <p class="text-xs text-gray-500 mb-2">${dateArr}</p>
                     </div>
                   `
                     }
@@ -106,7 +108,7 @@ const Messages = {
             })
           }
 
-        }, 2000);
+        }, 5000);
       });
 
 

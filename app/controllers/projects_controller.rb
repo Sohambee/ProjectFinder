@@ -103,7 +103,6 @@ class ProjectsController < ApplicationController
 
   def create
       categories=project_params[:category].first().split(',')
-      logger.info categories.first().first()
       projectParams= project_params
       projectParams[:category] = categories
       categories.each do |category|
@@ -130,12 +129,10 @@ class ProjectsController < ApplicationController
 
   def edit
     @projectInstance = Project.where(id: params[:id])
-    logger.info @projectInstance.inspect
   end
 
   def update
       categories =project_params[:category].first().split(',')
-      logger.info categories.first().first()
       projectParams= project_params
       projectParams[:category] = categories
       categories.each do |category|

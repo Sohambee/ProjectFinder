@@ -22,7 +22,6 @@ class User < ApplicationRecord
   pg_search_scope :search, against: %i(name email about location level_of_availability)
 
   def used_project?(project)
-    logger.info self.projects.include? project.id
     if project.user_id == self.id
       return true
     end
@@ -30,7 +29,6 @@ class User < ApplicationRecord
       if value['username'] == self.username
         return true
       end
-      logger.info value
     end
     return false
   end

@@ -18,7 +18,6 @@ class MessagesController < ApplicationController
     end
 
     @messages = @conversation.messages
-    logger.info @conversation.last_message.inspect
 
 
 
@@ -28,7 +27,6 @@ class MessagesController < ApplicationController
       @user = User.find(@conversation.sender_id)
     end
 
-    logger.info @user.username
 
     if @messages.length > 100
       @over_ten = true
@@ -61,7 +59,7 @@ class MessagesController < ApplicationController
                         FROM      messages
                         GROUP BY  conversation_id
                     ) m ON m.conversation_id = conversations.id").
-                    select('conversations.*, messages.body,messages.read, messages.user_id').
+                    select('conversations.*, messages.body,messages.read, messages.user_id, messages.created_at as messageCreatedAt').
                     where('sender_id = (?) OR recipient_id = (?)', current_user.id, current_user.id)
 
 
@@ -74,7 +72,6 @@ class MessagesController < ApplicationController
     end
 
     @messages = @conversation.messages
-    logger.info @conversations
 
 
 
@@ -84,7 +81,6 @@ class MessagesController < ApplicationController
       @user = User.find(@conversation.sender_id)
     end
 
-    logger.info @user.username
 
     if @messages.length > 100
       @over_ten = true

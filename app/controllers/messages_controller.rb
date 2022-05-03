@@ -63,7 +63,7 @@ class MessagesController < ApplicationController
                     where('sender_id = (?) OR recipient_id = (?)', current_user.id, current_user.id)
 
 
-    @conversations = @conversations.includes(:last_message).order('messages.created_at DESC')
+    @conversations = @conversations.order('messages.created_at DESC')
 
 
     if @conversation.last_message.user_id != current_user.id

@@ -171,7 +171,7 @@ const Project = {
 
     const callback = () => {
       let volunteerNote;
-      if ($("#volunteer_note").val()) {
+      if ($("#volunteer_note").val() == "Other") {
         volunteerNote = $("#otherReason").val();
       } else {
         volunteerNote = $("#volunteer_note").val();

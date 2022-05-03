@@ -36,6 +36,7 @@ const Messages = {
                   if (item.sender_id == data.user) user = item.reciever_name
                   else user = item.sender_name
 
+                  innerInfor = `<div>No messages exchanged!</div>`
                   if (item.body) {
                     if (item.read || item.user_id == data.user) {
                       if (item.user_id == data.user) {
@@ -44,7 +45,7 @@ const Messages = {
                         innerInfor = `<div>${item.body.slice(0, 22)} | ${String(item.messagecreatedat).split("T")[0]}</div>`
                       }
                     } else innerInfor = `<div class="font-bold">${item.body.slice(0, 22)} | ${String(item.messagecreatedat).split("T")[0]}</div>`
-                  } else innerInfor = `<div>No messages exchanged!</div>`
+                  }
 
                   let inner = `
                   <a href=${link} class="${classname} outline-none">

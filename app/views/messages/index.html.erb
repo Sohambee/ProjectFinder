@@ -86,7 +86,7 @@
                 </div>
               </div>
               <div class="flex justify-start">
-                <p class="text-xs text-gray-500 font-thin mb-2"><%= message.created_at.to_s().split(" ").first() %></p>
+                <p class="text-xs text-gray-500 font-thin mb-2"><%= message.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%m/%d/%Y, %l:%M %p").sub(/^(0+:?)*/, '') %></p>
               </div>
             <% end %>
           <% end %>

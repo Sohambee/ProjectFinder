@@ -1,15 +1,15 @@
-<div class='relative h-80 border-2 bg-gray-50 border-black rounded-lg width block hover:shadow-2xl transform transition-all duration-200'>
+<div class='relative h-80 flex flex-col border-2 bg-gray-50 border-black rounded-lg width block hover:shadow-2xl transform transition-all duration-200'>
   <a>
-    <%= link_to project, class: 'block transform transition-all duration-100' do %>
+    <%= link_to project, class: 'block transform transition-all duration-100 w-full' do %>
         <%
           category = Settings.project_categories.select { |cat| cat.name == local_assigns[:category] }.first if local_assigns[:category].present?
 
           category_override = category.present? ? local_assigns[:category] : nil
         %>
 
-        <div class="px-5 pt-5 pb-6">
-          <div class="text-lg text-left ml-2 font-medium truncate leading-tight mb-1"><%= project.name %></div>
-          <div class="text-gray-500 font-bold text-left ml-2 text-sm mb-3 leading-tight overflow-hidden">
+        <div class="flex flex-col px-2 md:px-5 pt-5 pb-6 w-full">
+          <div class="text-lg text-left font-medium truncate leading-tight mb-1"><%= project.name %></div>
+          <div class="text-gray-500 font-bold text-left text-sm mb-3 leading-tight overflow-hidden">
             <% if project.category.present? %>
               <%= project.category.first %>
             <% else %>
@@ -17,11 +17,12 @@
             <% end %>
           </div>
 
-          <div class="text-gray-500 text-clip text-ellipsis text-left ml-2 text-sm leading-tight overflow-hidden">
+          <div class="text-gray-500 text-clip text-ellipsis text-left text-sm leading-tight overflow-hidden">
                 <div class="text-left h-36">
                   <%= project.description %>
                 </div>
           </div>
+        </div>
         
           <!--<% if project.project_types.present? %>
             <div class="relative w-full h-6 mb-4">
@@ -37,21 +38,18 @@
             </div>
           <% end %>-->
 
-          <div class="absolute bottom-0 mb-4 grid grid-cols-2 gap-2 text-left ml-2 text-xs">
-            <div>
-              <div class="font-bold">
-                <%= project.views =%> view(s)
-              </div>
-              <div class="text-gray-500"><%= time_ago_in_words project.created_at %> ago</div>
-            </div>
-            <div class="grid-cols-2 right-0 gap-2 ml-8 sm:ml-8 md:ml-14 text-xs">
-              <div class="text-lg">
-                <a>
-                  <%= link_to project, class: 'block transform transition-all duration-100' do %>
-                    <div class="content-right width-full"><span class="text-blue-600 hover:text-cyan-700 hover:underline">View project</span></div>
-                  <% end %>
-                </a>
-              </div>
+        <div class="flex flex-row center px-2 md:px-5 pb-2 pt-2 w-full items-center absolute bottom-0 w-full flex flex-row text-left text-xs">
+          <div class="font-bold">
+            <%= project.views =%> view(s)
+          </div>
+          <div class="text-gray-500"><%= time_ago_in_words project.created_at %> ago</div>
+          <div class="w-full text-end right-0 text-xs" style="text-align: end;">
+            <div class="text-lg">
+              <a>
+                <%= link_to project, class: 'block transform transition-all duration-100' do %>
+                  <div class="content-right width-full sm:none"><span class="text-blue-600 hover:text-cyan-700 hover:underline">View project</span></div>
+                <% end %>
+              </a>
             </div>
           </div>
         </div>

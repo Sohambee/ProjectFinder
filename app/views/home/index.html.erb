@@ -26,34 +26,36 @@
   </div>
   <div class="flex flex-wrap pb-24">
     <!--Left col-->
-    <div class="w-full sm:w-1/2 bg-primary-500 sm:rounded-r-lg pb-6 h-fit">
+    <div class="w-full lg:w-1/2 bg-primary-500 sm:rounded-r-lg pb-6 h-fit">
       <div class="items-center">
         <h1 class="w-full text-4xl tracking-tight text-white leading-10 font-extrabold sm:text-5xl py-10 pr-10 sm:leading-none md:text-6xl text-left sm:text-right my-auto ml-4 sm:pl-20">
           Create your<br> own project!
         </h1>
-        <div class="text-left sm:text-right text-xl ml-4 sm:pl-28 pr-10 text-white">You can use this platform to find yourself a project for any use but thats not where we stop. We created this stage for consumers to get together to find ideas and pitch them aswell. You can create projects and publish them for other people to use! All you have to do is create an account and press on <a class="font-bold hover:underline cursor-pointer" href="/projects/new">'Create project'</a></div>
+        <div class="text-left sm:text-right text-xl ml-4 sm:pl-28 pr-10 text-white">You can use this platform to find yourself a project for any use but thats not where we stop. We created this stage for consumers 
+        to get together to find ideas and pitch them as well. You can create projects and publish them for other people to use!
+        All you have to do is create an account and press on <a class="font-bold hover:underline cursor-pointer" href="/projects/new">'Create project'</a></div>
       </div>
     </div>
     <!--Right col-->
-    <div class="hidden w-full md:w-1/2 sm:block">
+    <div class="hidden w-full lg:w-1/2 lg:block" style="align-self: center;">
       <div style="max-height: 100%; max-width: 88%">
-        <img src="images/blurb-image.jpg" class="mt-7 mb-7 rounded-r-lg" alt="">
+        <img src="images/blurb-image.jpg" class="my-7 rounded-r-lg" alt="">
       </div>
     </div>
   </div>
   <div>
     <!-- Featured projects -->
-    <div id="featuredProjects" class="slider relative rounded-lg container text-center bg-blue-100 z-10 sm:pb-4 sm:px-15 sm:py-10">
+    <div id="featuredProjects" class="slider relative rounded-lg container text-center bg-blue-100 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'partials/featured-projects', locals: {title: "Most Viewed", projects: @featured_projects, category: nil} %>
     </div>
     <br/>
     <!-- Most Viewed projects -->
-    <div id="mostViewed" class="slider relative rounded-lg container text-center bg-blue-200 z-10 pb-4 px-15 py-10">
+    <div id="mostViewed" class="slider relative rounded-lg container text-center bg-blue-200 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'partials/most-viewed', locals: {title: "Most Viewed", projects: @most_view_projects, category: nil} %>
     </div>
     <br/>
     <!-- Project categories -->
-    <div id="featuredCategory" class="slider relative rounded-lg container text-center bg-blue-300 z-10 pb-4 px-15 py-10">
+    <div id="featuredCategory" class="slider relative rounded-lg container text-center bg-blue-300 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'featured-category', locals: {collection: @project_categories}%>
     </div>
   </div>

@@ -116,7 +116,6 @@ ActiveRecord::Schema.define(version: 2022_08_02_230910) do
     t.jsonb "user_ids", default: [], array: true
     t.string "requirements"
     t.string "steps"
-    t.string "tags", default: [], null: false, array: true
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

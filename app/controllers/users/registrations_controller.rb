@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def show
     @user = User.where(id: params[:id]).last
 
+
     if @user.blank? || !@user.is_visible_to_user?(current_user)
       flash[:error] = I18n.t('sorry_no_such_user')
       redirect_to projects_path
@@ -26,7 +27,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    track_event 'User registration complete' if resource.persisted?
+
+    puts resource.errors
+
+    # track_event 'User registration complete' if resource.persisted?
   end
 
   # GET /resource/edit
@@ -97,6 +101,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     private
       def sign_up_params
-        params.require(:user).permit(:username, :initiator_type, :email, :password, :password_confirmation)
+        params.require(:user).permit(:username, :name, :initiator_type, :email, :password, :password_confirmation)
       end
 end

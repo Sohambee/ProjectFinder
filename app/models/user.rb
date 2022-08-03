@@ -6,6 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :username, presence: true
+  validates :username, uniqueness: {
+    message: "has already been taken"
+  }
+  validates :username, :length => { :in => 6..30 }
+
   include PgSearch::Model
 
   has_many :projects, dependent: :destroy

@@ -9,7 +9,7 @@
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <div class="flex justify-center">
+    <div class="flex justify-center mt-4">
       <%= render "devise/shared/error_messages", resource: resource %>
     </div>
 
@@ -22,6 +22,16 @@
           <div class="mt-1 rounded-md shadow-sm">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
           </div>
+        </div>
+
+        <div class="mt-6">
+          <label for="password" class="block text-sm font-medium leading-5 text-gray-700">
+            Full Name
+          </label>
+          <div class="mt-1 rounded-md shadow-sm">
+            <%= f.text_field  :name , class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+          </div>
+           <p class="mt-2 text-sm text-gray-500">Enter full name (e.g: John Doe)</p>
         </div>
 
         <div class="mt-6">

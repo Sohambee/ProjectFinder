@@ -167,6 +167,17 @@ project_categories:
     color: blue
     url: https://learn.g2.com/hubfs/hardware-vs-software.jpg
 
+project_tags:
+  - name: C++
+  - name: C
+  - name: C#
+  - name: Java
+  - name: Javascript
+  - name: Ruby
+  - name: Python
+  - name: Flutter
+  - name: CSS
+  - name: HTML
 
 global_announcements:
 #  - title: Helpful resources for your projects

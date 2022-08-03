@@ -54,47 +54,39 @@
           </div>
         </div>
       </div> -->
-      <div class="mt-6 sm:mt-5">
-        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
-            <div class="sm:grid sm:grid-cols-3 sm:items-baseline">
-              <div>
-                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  Project Categories
-                </legend>
-              </div>
-              <div class="ml-2">
-                <% Settings.project_categories.each do |category| %>
-                  <input type="checkbox" id="<%= category.name %>" name="<%= category.name %>" value="<%= category.name %>">
-                  <label class="ml-2" for="<%= category.name %>"><%= category.name %></label><br>
-                <% end %>
-              </div>
-              <div>
-                <input class="hidden" type="textbox" id="categoryArr" name="project[category][]" class="" value="<%= @project.category %>" >
-              </div>
-
-              <!-- <div class="w-full">
-                <div class="rounded my-2 relative pin-t pin-l w-11/12">
-                  <ul class="list-reset w-full">
-                    <li class="flex w-full">
-                      <input id="search_categories" type="text" maxlength="30" class="border-2 rounded h-8 w-full">
-                      <button id="addCategory" class="bg-primary-600 text-white rounded h-8 w-24 ml-4 hover:bg-primary-700">
-                        Add
-                      </button>
-                    </li>
-                    <div id="add_search">
-                    </div>
-                  </ul>
-                </div>
-                <br>
-                <div >
-                  <div >
-                    <div id="categories">
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div class="mt-6 sm:mt-5">
+      <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+        <div class="sm:grid sm:grid-cols-3 sm:items-baseline">
+          <div>
+            <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+              Project Categories
+            </legend>
           </div>
-          <input type="textbox" id="categoryArr" name="project[category][]" class="hidden" value="<%= @project.category %>" > -->
+          <div class="ml-2" id="categories">
+            <% Settings.project_categories.each do |category| %>
+              <input type="checkbox" id="<%= category.name %>" name="<%= category.name %>" value="<%= category.name %>">
+              <label class="ml-2" for="<%= category.name %>"><%= category.name %></label><br>
+            <% end %>
+          </div>
+          <div>
+            <input class="hidden" type="textbox" id="categoryArr" name="project[category][]" class="" value="<%= @project.category %>" >
+          </div>
+        </div>
+        <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+          <div>
+            <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+              Project Tags (optional)
+            </legend>
+          </div>
+          <div class="" id="tags">
+            <% Settings.project_tags.each do |tag| %>
+              <input type="checkbox" id="<%= tag.name %>" name="<%= tag.name %>" value="<%= tag.name %>">
+              <label class="ml-2" for="<%= tag.name %>"><%= tag.name %></label><br>
+            <% end %>
+          </div>
+          <div>
+            <input class="hidden" type="textbox" id="tagArr" name="project[tags][]" class="" value="<%= @project.tags %>" >
+          </div>
         </div>
         <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label for="description" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
@@ -133,17 +125,6 @@
             <p class="mt-2 text-sm text-gray-500"><%= t('process') %></p>
           </div>
         </div>
-        <!-- <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="docs_and_demo" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-            <%= t('do_you_have_a_demo_or_extra_documentation') %>
-          </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <div class="max-w-lg flex rounded-md shadow-sm">
-              <%= f.text_area "docs_and_demo", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
-            </div>
-            <p class="mt-2 text-sm text-gray-500"><%= t('demo_can_be_anything_that_shows_volunteers_how_the') %></p>
-          </div>
-        </div> -->
         <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
           <label for="links" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
             <%= t('helpful_links') %><br/>
@@ -179,7 +160,7 @@
     if (window.location.pathname.includes("edit")) {
       let c = $("#categoryArr").val(); //take values of element and set to c
       $("#categoryArr").val(c) //set c to the values of the element
-      $('input[type=checkbox]').each(function () { //for each checkbox
+      $('#categories :input[type=checkbox]').each(function () { //for each checkbox
         if (c.includes(this.value)) { //if the stored array c includes the category then check the box
           $(this).prop('checked', true); //check the box
           categories.push(this.value); //add the stored element to the category
@@ -187,7 +168,7 @@
       });
     }
 
-    $('input[type=checkbox]').change(function () {
+    $('#categories :input[type=checkbox]').change(function () {
       if ($(this).is(':checked')) {
             categories.push(this.value);
             $("#categoryArr").val(categories)
@@ -197,6 +178,31 @@
           categories.splice(index, 1);
         }
         $("#categoryArr").val(categories)
+      }
+    });
+
+    let tags = []; //define tags array
+    if (window.location.pathname.includes("edit")) {
+      let t = $("#tagArr").val(); //take values of element and set to c
+      $("#tagArr").val(t) //set c to the values of the element
+      $('#tags :input[type=checkbox]').each(function () { //for each checkbox
+        if (t.includes(this.value)) { //if the stored array c includes the category then check the box
+          $(this).prop('checked', true); //check the box
+          tags.push(this.value); //add the stored element to the category
+        }
+      });
+    }
+
+    $('#tags :input[type=checkbox]').change(function () {
+      if ($(this).is(':checked')) {
+            tags.push(this.value);
+            $("#tagArr").val(tags)
+      } else {
+        const index = tags.indexOf(this.value);
+        if (index > -1) {
+          tags.splice(index, 1);
+        }
+        $("#tagArr").val(tags)
       }
     });
   });

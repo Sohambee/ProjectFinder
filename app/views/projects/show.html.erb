@@ -317,6 +317,13 @@
                     <% end %>
                 <% end %>
               <% end %>
+              <% if @project.tags? %>
+                <%= project_panel_item(title: t('tags')) do %>
+                    <% @project.tags.each do |tag| %>
+                      <%= simple_format Rinku.auto_link(sanitize(tag), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: '' }, sanitize: false %>
+                    <% end %>
+                <% end %>
+              <% end %>
               <%= project_panel_item(title: t('reference_link')) do %>
                 <span id="link" class="text-primary-500 hover:underline cursor-pointer" onclick="copyMethod()" value=<%= request.original_url %>>Copy Link</span>
               <% end %>

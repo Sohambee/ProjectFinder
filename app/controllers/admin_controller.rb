@@ -17,4 +17,13 @@ class AdminController < ApplicationController
     flash[:notice] = @project.highlight? ? 'Project highlighted' : 'Removed highlight on project'
     redirect_to project_path(@project)
   end
+
+  def approve_project
+    @project = Project.find(params[:project_id])
+    @project.approved = TRUE
+    @project.save
+
+    flash[:notice] = @project.approved? ? 'Project approved' : ''
+    redirect_to project_path(@project)
+  end
 end

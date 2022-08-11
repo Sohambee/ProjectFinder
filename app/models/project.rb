@@ -119,4 +119,8 @@ class Project < ApplicationRecord
     projects_count = 6
     Project.order('views DESC').limit(projects_count)
   end
+
+  def self.get_unapproved
+    Project.select(Arel.star).where(Project.arel_table[:approved].eq(FALSE)).order(:created_at).reverse_order
+  end
 end

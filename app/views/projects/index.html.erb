@@ -15,9 +15,15 @@
       </div>
       <%= list_cards do %>
         <% @projects.each do |project| %>
-          <% if project.approved %>
+          <% if request.url.include?('own') %>
             <% cache project do %>
               <%= render partial: 'project-card', locals: { project: project, category: @project_category.present? ? @project_category[:name] : nil} %>
+            <% end %>
+          <% else %>
+            <% if project.approved  %>
+              <% cache project do %>
+                <%= render partial: 'project-card', locals: { project: project, category: @project_category.present? ? @project_category[:name] : nil} %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>

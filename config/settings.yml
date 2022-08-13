@@ -169,15 +169,25 @@ project_categories:
 
 project_tags:
   - name: C++
+    value: 1
   - name: C
+    value: 2
   - name: C#
+    value: 3
   - name: Java
+    value: 4
   - name: Javascript
+    value: 5
   - name: Ruby
+    value: 6
   - name: Python
+    value: 7
   - name: Flutter
+    value: 8
   - name: CSS
+    value: 9
   - name: HTML
+    value: 10
 
 global_announcements:
 #  - title: Helpful resources for your projects

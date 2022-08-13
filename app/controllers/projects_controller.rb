@@ -78,7 +78,8 @@ class ProjectsController < ApplicationController
     @projects_subheader = I18n.t('these_are_the_projects_you_created')
     @page_title = I18n.t('own_projects')
     render action: 'index'
-  end
+
+      end
 
   def show
     respond_to do |format|

@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     post :delete_user, to: 'admin#delete_user', as: 'delete_user'
     post :toggle_highlight, to: 'admin#toggle_highlight', as: 'toggle_project_highlight'
     post :approve_project, to: 'admin#approve_project', as: 'toggle_project_approve'
+    post :deny_project, to: 'admin#deny_project', as: 'toggle_project_deny'
 
     resources :volunteer_groups, module: 'admin' do
       collection do

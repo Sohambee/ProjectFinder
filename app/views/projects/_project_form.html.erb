@@ -184,12 +184,16 @@
     let tags = []; //define tags array
     if (window.location.pathname.includes("edit")) {
       let t = $("#tagArr").val(); //take values of element and set to c
+      var splitTags = t.replaceAll('"','').replaceAll("[", "").replaceAll("]", "").split(',');
       $("#tagArr").val(t) //set c to the values of the element
       $('#tags :input[type=checkbox]').each(function () { //for each checkbox
-        if (t.includes(this.value)) { //if the stored array c includes the category then check the box
-          $(this).prop('checked', true); //check the box
-          tags.push(this.value); //add the stored element to the category
-        }
+      console.log(this.value)
+        splitTags.forEach(element => {
+          if (element == this.value) {
+            $(this).prop('checked', true); //check the box
+            tags.push(this.value); //add the stored element to the category
+          }
+        }); 
       });
     }
 

@@ -7,11 +7,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :set_bg_white, only: :index
 
   def index
+    
     users_filtering 'users'
   end
 
   def show
-    @user = User.where(id: params[:id]).last
+        @user = User.where(id: params[:id]).last
 
 
     if @user.blank? || !@user.is_visible_to_user?(current_user)
@@ -21,11 +22,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new
+    
     track_event 'User registration started'
     super
   end
 
   def create
+    
     super
 
     puts resource.errors

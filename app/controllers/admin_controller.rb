@@ -26,4 +26,12 @@ class AdminController < ApplicationController
     flash[:notice] = @project.approved? ? 'Project approved' : ''
     redirect_to project_path(@project)
   end
+
+  def deny_project
+    @project = Project.find(params[:project_id])
+    @project.destroy
+
+    flash[:notice] = !@project.approved? ? 'Project denied' : ''
+    redirect_to projects_path
+  end
 end

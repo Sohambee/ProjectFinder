@@ -23,15 +23,18 @@ class AdminController < ApplicationController
     @project.approved = TRUE
     @project.save
 
-    flash[:notice] = @project.approved? ? 'Project approved' : ''
+    $unapproved_projects = Project.get_unapproved
+
+    flash[:notice] = @project.approved? ? 'Project approved' : 'There was an error approving the project'
     redirect_to project_path(@project)
   end
 
   def deny_project
     @project = Project.find(params[:project_id])
-    @project.destroy
+    @project.approved = FALSE
+    @project.save
 
-    flash[:notice] = !@project.approved? ? 'Project denied' : ''
-    redirect_to projects_path
+    flash[:notice] = !@project.approved? ? 'Project denied' : 'There was an error denying the project'
+    redirect_to project_path(@project)
   end
 end

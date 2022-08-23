@@ -113,6 +113,8 @@ class ProjectsController < ApplicationController
        end
      end
       @project = current_user.projects.new(projectParams)
+      $unapproved_projects = Project.get_unapproved
+
 
       respond_to do |format|
         if @project.save
@@ -130,6 +132,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @projectInstance = Project.where(id: params[:id])
+    $unapproved_projects = Project.get_unapproved
   end
 
   def update
@@ -141,6 +144,8 @@ class ProjectsController < ApplicationController
          cat = Categorie.create(category: category)
          cat.save!
        end
+      $unapproved_projects = Project.get_unapproved
+
      end
       updated = @project.update(projectParams)
       respond_to do |format|

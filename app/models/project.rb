@@ -121,7 +121,7 @@ class Project < ApplicationRecord
   end
 
   def self.get_unapproved
-    Project.where(approved: false)
+    Project.where(approved: false).order('created_at ASC')
     # Project.select(Arel.star).where(Project.arel_table[:approved].eq(FALSE)).order(:created_at).reverse_order
   end
 end

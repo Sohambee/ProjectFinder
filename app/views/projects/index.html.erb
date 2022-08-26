@@ -20,7 +20,7 @@
               <%= render partial: 'project-card', locals: { project: project, category: @project_category.present? ? @project_category[:name] : nil} %>
             <% end %>
           <% else %>
-            <% if project.approved?  %>
+            <% if project.approved  %>
               <% cache project do %>
                 <%= render partial: 'project-card', locals: { project: project, category: @project_category.present? ? @project_category[:name] : nil} %>
               <% end %>

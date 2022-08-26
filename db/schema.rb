@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_09_205020) do
+ActiveRecord::Schema.define(version: 2022_08_26_175224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,8 +116,8 @@ ActiveRecord::Schema.define(version: 2022_08_09_205020) do
     t.jsonb "user_ids", default: [], array: true
     t.string "requirements"
     t.string "steps"
+    t.boolean "approved", default: false, null: false
     t.string "tags", default: [], null: false, array: true
-    t.boolean "approved", default: false
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

@@ -17,4 +17,24 @@ class AdminController < ApplicationController
     flash[:notice] = @project.highlight? ? 'Project highlighted' : 'Removed highlight on project'
     redirect_to project_path(@project)
   end
+
+  def approve_project
+    @project = Project.find(params[:project_id])
+    @project.approved = TRUE
+    @project.save
+
+    $unapproved_projects = Project.get_unapproved
+
+    flash[:notice] = @project.approved? ? 'Project approved' : 'There was an error approving the project'
+    redirect_to project_path(@project)
+  end
+
+  def deny_project
+    @project = Project.find(params[:project_id])
+    @project.approved = FALSE
+    @project.save
+
+    flash[:notice] = !@project.approved? ? 'Project denied' : 'There was an error denying the project'
+    redirect_to project_path(@project)
+  end
 end

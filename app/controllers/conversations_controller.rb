@@ -4,9 +4,10 @@ class ConversationsController < ApplicationController
   def index
     @users = User.all
     @conversations = Conversation.all
-  end
+      end
 
   def new
+    
 
     if Conversation.between(params[:sender_id], params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
@@ -21,6 +22,7 @@ class ConversationsController < ApplicationController
 
 
   def getLastUserMessage
+    
     @conversation = current_user.getMessageRoute()
     if !@conversation.blank?
       redirect_to conversation_messages_path(@conversation)

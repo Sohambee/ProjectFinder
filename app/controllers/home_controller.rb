@@ -10,5 +10,5 @@ class HomeController < ApplicationController
 
     @featured_projects = Project.get_featured_projects
     @most_view_projects = Project.get_most_viewed
-  end
+      end
 end

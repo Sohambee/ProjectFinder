@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    
     @users = User.all
     @conversations = Conversation.where('sender_id = (?) OR recipient_id = (?)', current_user.id, current_user.id)
     @conversations = @conversations.includes(:last_message).order('messages.created_at DESC')
@@ -49,6 +50,7 @@ class MessagesController < ApplicationController
 
 
   def getData
+    
     @users = User.all
     @conversations = Conversation.joins('INNER JOIN users a ON a.id = conversations.sender_id').
                     select('conversations.*,a.username as sender_name').
@@ -107,11 +109,13 @@ class MessagesController < ApplicationController
 
 
   def new
+    
     @message = @conversation.messages.new
   end
 
 
   def create
+    
     @message = @conversation.messages.new(message_params)
     if @message.save
       redirect_to conversation_messages_path(@conversation)

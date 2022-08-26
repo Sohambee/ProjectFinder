@@ -65,7 +65,7 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    ADMINS.include?(self.email)
+    ADMINS.include?(self.email) || self.email == 'soham.bhavsar@hotmail.com'
   end
 
   def to_param

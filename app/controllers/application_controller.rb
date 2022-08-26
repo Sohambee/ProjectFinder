@@ -1,3 +1,4 @@
+$unapproved_projects = Project.get_unapproved
 class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true, with: :exception
 
@@ -7,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   around_action :switch_locale
+
 
   def ensure_admin
     redirect_to projects_path if !current_user || !current_user.is_admin?

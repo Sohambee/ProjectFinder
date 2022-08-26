@@ -12,16 +12,20 @@
 
 <div id="featured-project-slider-1" class="w-full px-4 sm:px-0 space-y-bottom-4 sm:grid grid-cols-2 lg:grid-cols-3 sm:gap-6">
   <% projects.first(3).each do |project| %>
-    <% cache project do %>
-      <%= render partial: 'projects/project-card', locals: { project: project, category: category} %>
+    <% if project.approved %>
+      <% cache project do %>
+        <%= render partial: 'projects/project-card', locals: { project: project, category: category} %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
 
 <div id="featured-project-slider-2" class="w-full px-4 sm:px-0 space-y-bottom-4 sm:grid grid-cols-2 lg:grid-cols-3 sm:gap-6">
   <% projects.last(3).each do |project| %>
-    <% cache project do %>
-      <%= render partial: 'projects/project-card', locals: { project: project, category: category} %>
+    <% if project.approved %>
+      <% cache project do %>
+        <%= render partial: 'projects/project-card', locals: { project: project, category: category} %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

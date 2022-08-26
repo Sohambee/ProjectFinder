@@ -111,7 +111,7 @@ class ProjectsController < ApplicationController
          cat = Categorie.create(category: category)
          cat.save!
        end
-     end
+      end
       @project = current_user.projects.new(projectParams)
       $unapproved_projects = Project.get_unapproved
 

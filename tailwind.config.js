@@ -39,6 +39,7 @@ module.exports = {
   theme: {
     minWidth: {
       '1/2': '50%',
+      '3/4': '75%',
     },
     scale: {
       '102': '1.02',

@@ -25,7 +25,7 @@
   <% end %>-->
   <% if @project.approved? || (current_user && current_user.is_admin?) || (current_user && @project.can_edit?(current_user)) %>
     <% if current_user && current_user.is_admin? %>
-      <div class="bg-white border-2 border-red-300 bg-red-100 shadow sm:rounded-lg mt-8 mx-4 sm:mx-0 gap-0 rounded-lg shadow overflow-hidden">
+      <div class="bg-white border-2 border-red-300 bg-red-100 shadow sm:rounded-lg mt-8 mx-4 gap-0 rounded-lg shadow overflow-hidden">
         <div class="px-4 py-5 sm:p-6">
           <h3 class="text-lg leading-6 font-medium text-gray-900">
             Admin area
@@ -89,7 +89,7 @@
       </div>
     <% end %>
     <div>
-      <div class="mt-8 mx-4 sm:mx-0 gap-0 rounded-lg bg-white shadow overflow-hidden">
+      <div class="mt-8 mx-4 gap-0 rounded-lg bg-white shadow overflow-hidden">
         <div class="w-full justify-between">
           <div class="p-4 sm:p-6 pb-7">
             <div class="grid grid-cols-2">
@@ -167,7 +167,7 @@
           <% end %>
         </div>
       </div>
-      <div class="mt-8 mx-4 sm:grid sm:grid-cols-3 sm:gap-10 sm:mx-0">
+      <div class="mt-8 mx-4 sm:grid sm:grid-cols-3 sm:gap-10">
         <div class="sm:col-span-2">
           <div class="bg-white overflow-hidden rounded-lg sm:pb-4 shadow">
             <div class="bg-secondary-100 border-b border-primary-400">
@@ -207,7 +207,7 @@
                     </dd>
                   </div>
                   <div id="usedByUser" class="hidden">
-                    <dt class="text-sm leading-5 text-gray-800">
+                    <dt class="text-sm leading-5 text-gray-800 overflow-x-auto">
                       <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                           <tr>

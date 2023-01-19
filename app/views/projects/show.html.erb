@@ -340,7 +340,7 @@
                       <% end %>
                   <% end %>
                 <% end %>
-                <% if @project.tags? %>
+                <% if !@project.tags.include?("")  %>
                   <%= project_panel_item(title: t('tags')) do %>
                       <% @project.tags.each do |tag| %>
                         <%= simple_format Rinku.auto_link(sanitize(tag), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: '' }, sanitize: false %>

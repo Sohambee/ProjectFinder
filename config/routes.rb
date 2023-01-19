@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get '/about', to: 'home#about', as: 'about'
 
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   devise_scope :user do
     get '/users/p/:page' => 'users/registrations#index', as: 'users_with_pagination'
     get 'users', to: 'users/registrations#index', as: 'volunteers'

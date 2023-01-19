@@ -35,19 +35,21 @@
     <div class="flex-1">
       <div class="pb-10 header mt-10">
           <% if flash.present? %>
-            <div id="flash" class="hidden w-1/5 container fixed mt-20 flex z-50">
-              <% flash.each do |type, msg| %>
-              <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 shadow-md <%= alert_container_class_for_flash_type type %>" role="alert">
-                <div class="flex">
-                  <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-                  <div>
-                    <p class="font-bold">Notification</p>
-                    <span class="block sm:inline"><%= msg %></span>
+            <div class="flex fixed z-50 mt-2">
+              <div id="flash" class="flex z-1000 justify-center lg:justify-start w-screen">
+                <% flash.each do |type, msg| %>
+                <div class="lg:mx-0 lg:w-auto w-full mx-4 sm:max-w-md bg-teal-100 border-t-4 border-teal-500 lg:rounded-r-lg rounded-none text-teal-900 px-4 shadow-md <%= alert_container_class_for_flash_type type %>" role="alert">
+                  <div class="flex">
+                    <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                    <div>
+                      <p class="font-bold">Notification</p>
+                      <span class="block sm:inline"><%= msg %></span>
+                    </div>
                   </div>
                 </div>
+                <% end %>
               </div>
-              <% end %>
-            </div>
+            </div>  
           <% end %>
 
           <%= yield %>
@@ -65,16 +67,16 @@
 
   <script type="text/javascript">
       $(document).ready(function() {
-        if ($(window).width() > 1024) {
-          $("#flash").delay(400).fadeIn('fast', function() {
+        // if ($(window).width()  1024) {
+          $("#flash").delay(0).fadeIn('slow', function() {
             $(this).show();
           });
-          $( "#flash" ).delay(1800).fadeOut('fast', function() {
-            $(this).remove();
+          $("#flash").delay(3000).fadeOut('slow', function() {
+            $(this).css('display', 'none');
           });
-        } else {
-          $( "#flash" ).hide();
-        }
+        // } else {
+        //   $("#flash").css('display', 'none');
+        // }
       });
   </script>
 </html>

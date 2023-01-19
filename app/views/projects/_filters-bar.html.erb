@@ -1,4 +1,4 @@
-<div class="js-sticky-filter mt-12 md:mx-4 z-30 shadow-lg relative-important" x-data="{}" x-init="Covid.keepFiltersSticky()">
+<div class="js-sticky-filter mt-12 mx-4 z-30 shadow-lg relative-important" x-data="{}" x-init="Covid.keepFiltersSticky()">
   <div class="bg-primary-100 rounded flex justify-between items-center w-full py-3 px-6 flex-col lg:flex-row">
     <div class="flex flex-1 flex-col lg:flex-row items-center w-full lg:mr-4 mb-4 lg:mb-0">
       <%# <div class="font-bold mb-2 lg:mb-0 mr-2"><%= t('filter_by')</div> %>
@@ -19,7 +19,7 @@
     </div>
     <div class="flex flex-col lg:flex-row items-center lg:mb-0 w-full lg:w-auto">
       <%= form_with url: projects_path, local: true, method: :get, html: {'x-ref': 'searchForm', class: 'relative mx-4 sm:mx-0 sm:ml-6 mt-4 sm:-mt-1'} do |form| %>
-        <%= form.text_field :query, placeholder: "Search", value: params[:query], class: "w-80 pl-2 px-1 border border-primary-100 p-1 pr-7 rounded text-left border-primary-400 text-primary-600 outline-none focus:border-primary-600 -mb-4", required: true %>
+        <%= form.text_field :query, placeholder: "Search", value: params[:query], class: "w-full md:w-80 pl-2 px-1 border border-primary-100 p-1 pr-7 rounded text-left border-primary-400 text-primary-600 outline-none focus:border-primary-600 -mb-4", required: true %>
         <button class="absolute inset-auto right-0 p-2 rounded-full cursor-pointer border-none shadow-none text-sm bg-transparent hover:bg-gray-100 transition duration-75" style="margin-top: 1px; margin-right: 2px;" @click="$refs.searchForm.submit()">
           <%= inline_svg_pack_tag 'media/svgs/magnifier.svg', class: 'w-4 h-4' %>
         </button>

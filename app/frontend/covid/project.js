@@ -9,7 +9,7 @@ const Project = {
           let temp = index
           $("#categories").append(`
               <div id= ${"d" + temp} class="mb-8  w-auto">
-                <div class="flex items-center h-5">
+                <div class="flex items-center h-5 mt-4">
                     <label id=${"b" + temp} class="mr-6 font-medium text-gray-700">Category: ${item}</label>
                     <button id=${"c" + temp} value=${temp} style = "max-height:40px;" class="p-2 block text-black justify-end w-auto bg-red-100 hover:bg-gray-300 cursor-pointer removeValue" > Remove</button>
                 </div>
@@ -98,7 +98,7 @@ const Project = {
           let temp = window.localStorage.getItem("inc") || 0
           $("#categories").append(`
               <div id= ${"d" + temp} class="mb-8  w-auto">
-                <div class="flex items-center h-5">
+                <div class="flex items-center h-5 mt-4">
                     <label id=${"b" + temp} class="mr-6 font-medium text-gray-700">Category: ${$(`#search_categories`).val()}</label>
                     <button id=${"c" + temp} value=${temp} class="p-2 block text-black justify-end w-auto bg-red-100 hover:bg-gray-300 cursor-pointer removeValue" > Remove</button>
                 </div>

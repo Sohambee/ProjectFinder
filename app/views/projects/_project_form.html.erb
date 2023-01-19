@@ -69,7 +69,7 @@
             <% end %>
           </div>
           <div>
-            <input class="hidden" type="textbox" id="categoryArr" name="project[category][]" class="" value="<%= @project.category %>" >
+            <input class="hidden" type="textbox" id="categoryArr" name="project[category][]" class="mt-4" value="<%= @project.category %>" >
           </div>
         </div>
         <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -157,6 +157,8 @@
 <script>
   $(window).ready(function() {
     let categories = []; //define categories array
+    let tags = []; //define categories array
+
     if (window.location.pathname.includes("edit")) {
       let c = $("#categoryArr").val(); //take values of element and set to c
       $("#categoryArr").val(c) //set c to the values of the element
@@ -181,19 +183,15 @@
       }
     });
 
-    let tags = []; //define tags array
+
     if (window.location.pathname.includes("edit")) {
-      let t = $("#tagArr").val(); //take values of element and set to c
-      var splitTags = t.replaceAll('"','').replaceAll("[", "").replaceAll("]", "").split(',');
-      $("#tagArr").val(t) //set c to the values of the element
+      let t = $("#tagArr").val(); //take values of element and set to t
+      $("#tagArr").val(t) //set t to the values of the element
       $('#tags :input[type=checkbox]').each(function () { //for each checkbox
-      console.log(this.value)
-        splitTags.forEach(element => {
-          if (element == this.value) {
-            $(this).prop('checked', true); //check the box
-            tags.push(this.value); //add the stored element to the category
-          }
-        }); 
+        if (t.includes(this.value)) { //if the stored array t includes the category then check the box
+          $(this).prop('checked', true); //check the box
+          tags.push(this.value); //add the stored element to the category
+        }
       });
     }
 
@@ -209,6 +207,47 @@
         $("#tagArr").val(tags)
       }
     });
+
+
+//------------------------------
+    // let tags = []; //define tags array
+    // if (window.location.pathname.includes("edit")) {
+    //   let t = $("#tagArr").val(); //take values of element and set to t
+    //   console.log('tag' + t)
+    //   console.log('array' + tags)
+    //   if (t.includes('[')) {
+    //     var splitTags = t.replaceAll('"[','').replaceAll("]", ", ").split(','); 
+    //     console.log('empty' + splitTags)
+    //   } else {
+    //     var splitTags = t
+    //     console.log('not empty' + splitTags)
+    //   }
+    //   $("#tagArr").val(t) //set t to the values of the element
+    //   $('#tags :input[type=checkbox]').each(function () { //for each checkbox
+    //     splitTags.forEach(element => {
+    //       console.log(element)
+    //       if (element == this.value) {
+    //         $(this).prop('checked', true); //check the box
+    //         tags.push(this.value); //add the stored element to the category
+    //       }
+    //     }); 
+    //   });
+    // }
+
+    // $('#tags :input[type=checkbox]').change(function () {
+    //   if ($(this).is(':checked')) {
+    //         tags.push(this.value);
+    //         $("#tagArr").val(tags);
+    //         console.log(tags)
+    //   } else {
+    //     const index = tags.indexOf(this.value);
+    //     if (index > -1) {
+    //       tags.splice(index, 1);
+    //     }
+    //     console.log(tags);
+    //     $("#tagArr").val(tags)
+    //   }
+    // });
   });
 
 </script>

@@ -37,6 +37,13 @@ Object.keys(themeColors).forEach((themeColor) => {
 
 module.exports = {
   theme: {
+    minWidth: {
+      '1/2': '50%',
+      '3/4': '75%',
+    },
+    scale: {
+      '102': '1.02',
+    },
     extend: { 
       colors: {
         smoke: 'rgba(0, 0, 0, 0.5)',
@@ -58,6 +65,9 @@ module.exports = {
       },
       minHeight: {
         '400px': '400px',
+      },
+      minWidth: {
+        '1/2': '50%',
       },
       boxShadow: {
         users: '0px 3px 16px rgba(0, 0, 0, 0.15)',

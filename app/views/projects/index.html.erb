@@ -9,7 +9,7 @@
   <%= render partial: 'filters-bar' if @show_filters %>
 
   <% if @projects.present? %>
-    <div class="mt-4">
+    <div class="mt-4 md:mx-4">
       <div class="mb-4">
         <%= paginate @projects, theme: 'projects_paginator' %>
       </div>

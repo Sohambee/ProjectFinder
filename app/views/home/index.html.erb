@@ -2,18 +2,18 @@
 <div class="bg-white -mt-6">
   <div class="banner w-screen pt-36 pb-36 mb-24 bg-fixed">
     <div class="container text-left">
-      <h1 class="object-left text-4xl ml-4 sm:ml-2 mr-2 lg:text-6xl sm:text-6xl text-white font-bold tracking-tight leading-tight">Find Project Ideas</h1>
-      <h2 class="text-2xl ml-4 sm:ml-2 mr-2 sm:text-2xl tracking-tight text-white  leading-tight">We help students find the right project for them</h2>
+      <h1 class="object-left text-4xl ml-2 md:ml-4 mr-2 lg:text-6xl sm:text-6xl text-white font-bold tracking-tight leading-tight">Find Project Ideas</h1>
+      <h2 class="text-xl ml-2 md:ml-4 mr-2 md:text-2xl tracking-tight text-white leading-tight">We help students find the right project for them</h2>
       <div class="relative left-0">
         <%= form_with url: projects_path, local: true, method: :get, html: {'x-ref': 'searchForm'} do |form| %>
-          <%= form.text_field :query, placeholder: 'Try "website development"', value: params[:query], class: "ml-4 sm:ml-2 relative border-none border-primary-100 p-2 pr-9 mt-4 rounded-l md:w-1/2 sm:w-1/3 text-left border-primary-400 h-12 align-bottom text-black outline-none focus:border-primary-600 z-0", required: true %>
-          <button class="absolute text-white inset-auto p-2 cursor-pointer border-none shadow-none text-sm bg-primary-600 hover:bg-gray-700 transition duration-75 w-16 rounded-r" style="margin-top: 16px; height: 48px" @click="$refs.searchForm.submit()">
+          <%= form.text_field :query, placeholder: 'Try "website development"', value: params[:query], class: "shadow-lg ml-2 md:ml-4 relative border-none border-primary-100 p-2 pr-9 mt-4 rounded-l md:w-1/2 sm:w-1/3 text-left border-primary-400 h-12 align-bottom text-black outline-none focus:border-primary-600 z-20", required: true %>
+          <button class="shadow-lg absolute text-white inset-auto p-2 cursor-pointer border-none text-sm bg-primary-600 hover:bg-gray-700 transition duration-75 w-16 rounded-r" style="margin-top: 16px; height: 48px" @click="$refs.searchForm.submit()">
             <!-- <%= inline_svg_pack_tag 'media/svgs/magnifier.svg' %> -->
             Search
           </button>
         <% end %>
       </div>
-      <div class="flex flex-wrap text-white text-md ml-4 sm:ml-2 mt-4">
+      <div class="flex flex-wrap text-white text-md ml-2 md:ml-4 mt-4">
         <label class="sm:mt-1">Popular:</label>
         <%= link_to projects_path, class: "" do %>
           <a href="/web_development" class="border-2 hidden sm:block ml-1 sm:mt-0 border-white text-sm rounded-full px-3 sm:py-1 hover:bg-white transition duration-300 hover:text-gray-600">Web Development</a>
@@ -24,9 +24,9 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-wrap pb-24">
+  <div class="flex flex-wrap pb-24 md:mr-4">
     <!--Left col-->
-    <div class="w-full lg:w-1/2 bg-primary-500 sm:rounded-r-lg pb-6 h-fit">
+    <div class="w-full lg:w-1/2 bg-primary-500 sm:rounded-r-lg pb-6 h-fit shadow-2xl">
       <div class="items-center">
         <h1 class="w-full text-4xl tracking-tight text-white leading-10 font-extrabold sm:text-5xl py-10 pr-10 sm:leading-none md:text-6xl text-left sm:text-right my-auto ml-4 sm:pl-20">
           Create your<br> own project!
@@ -37,7 +37,7 @@
       </div>
     </div>
     <!--Right col-->
-    <div class="hidden w-full lg:w-1/2 lg:block" style="align-self: center;">
+    <div class="hidden w-full lg:w-1/2 lg:block" style="align-self: center; shadow-xl">
       <div style="max-height: 100%; max-width: 88%">
         <img src="images/blurb-image.jpg" class="my-7 rounded-r-lg" alt="">
       </div>
@@ -45,17 +45,17 @@
   </div>
   <div>
     <!-- Featured projects -->
-    <div id="featuredProjects" class="slider relative rounded-lg container text-center bg-blue-100 z-10 md:pb-4 md:px-15 md:py-10">
+    <div id="featuredProjects" class="shadow slider relative rounded-lg container text-center bg-blue-100 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'partials/featured-projects', locals: {title: "Most Viewed", projects: @featured_projects, category: nil} %>
     </div>
     <br/>
     <!-- Most Viewed projects -->
-    <div id="mostViewed" class="slider relative rounded-lg container text-center bg-blue-200 z-10 md:pb-4 md:px-15 md:py-10">
+    <div id="mostViewed" class="shadow slider relative rounded-lg container text-center bg-blue-200 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'partials/most-viewed', locals: {title: "Most Viewed", projects: @most_view_projects, category: nil} %>
     </div>
     <br/>
     <!-- Project categories -->
-    <div id="featuredCategory" class="slider relative rounded-lg container text-center bg-blue-300 z-10 md:pb-4 md:px-15 md:py-10">
+    <div id="featuredCategory" class="shadow slider relative rounded-lg container text-center bg-blue-300 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'featured-category', locals: {collection: @project_categories}%>
     </div>
   </div>

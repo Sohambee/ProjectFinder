@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
         @projects_subheader = I18n.t('new_or_established_projects_helping_with')
         @page_title = I18n.t('all_projects')
 
-        @projects = @projects.page(params[:page]).per(24)
+        @projects = @projects.page(params[:page]).where(approved: TRUE).per(24)
 
         @index_from = (@projects.prev_page || 0) * @projects.limit_value + 1
         @index_to = [@index_from + @projects.limit_value - 1, @projects.total_count].min
@@ -103,15 +103,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-      categories=project_params[:category].first().split(',')
-      projectParams= project_params
-      projectParams[:category] = categories
-      categories.each do |category|
-       if Categorie.where(category: category).length()==0
-         cat = Categorie.create(category: category)
-         cat.save!
-       end
-      end
       @project = current_user.projects.new(projectParams)
       $unapproved_projects = Project.get_unapproved
 
@@ -119,7 +110,7 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         if @project.save
           track_event 'Project creation complete'
-          @project.project_initiator= @current_user.username
+          @project.project_initiator = @current_user.username
           @project.save!
           format.html { redirect_to @project, notice: I18n.t('project_was_successfully_created') }
           format.json { render :show, status: :created, location: @project }
@@ -131,32 +122,42 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @projectInstance = Project.where(id: params[:id])
-    $unapproved_projects = Project.get_unapproved
   end
 
   def update
-      categories =project_params[:category].first().split(',')
-      projectParams= project_params
-      projectParams[:category] = categories
-      categories.each do |category|
-       if Categorie.where(category: category).length()==0
-         cat = Categorie.create(category: category)
-         cat.save!
-       end
-      $unapproved_projects = Project.get_unapproved
+      # categories =project_params[:category].first().split(',')
+      # tags = project_params[:tags].first().split(',')
+      # projectParams= project_params
 
-     end
-      updated = @project.update(projectParams)
-      respond_to do |format|
-        if updated
-          format.html { redirect_to @project, notice: I18n.t('project_was_successfully_updated') }
-          format.json { render :show, status: :ok, location: @project }
-        else
-          format.html { render :edit }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
-        end
+
+      # projectParams[:category] = categories
+      # categories.each do |category|
+      #  if Categorie.where(category: category).length()==0
+      #    cat = Categorie.create(category: category)
+      #    cat.save!
+      #  end
+      # end
+      
+      if !project_params[:category].instance_of? Array
+        @project.category.clear
+        @project.save!
       end
+
+      if !project_params[:tags].instance_of? Array
+        @project.tags.clear
+        @project.save!
+      end
+
+      updated = @project.update(project_params)
+      respond_to do |format|
+      if updated
+        format.html { redirect_to @project, notice: I18n.t('project_was_successfully_updated') }
+        format.json { render :show, status: :ok, location: @project }
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
 
@@ -167,6 +168,7 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: I18n.t('project_was_successfully_deleted') }
       format.json { head :no_content }
     end
+    $unapproved_projects = Project.get_unapproved
   end
 
   def toggle_volunteer

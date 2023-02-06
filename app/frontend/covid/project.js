@@ -3,32 +3,33 @@ const Project = {
     $(document).on('turbolinks:load', () => {
       if (window.location.pathname.includes("edit")) {
 
-        let c = $("#categoryArr").val() != "[]" ? JSON.parse($("#categoryArr").val()) : []
-        $("#categoryArr").val(c)
-        c.map((item, index) => {
-          let temp = index
-          $("#categories").append(`
-              <div id= ${"d" + temp} class="mb-8  w-auto">
-                <div class="flex items-center h-5 mt-4">
-                    <label id=${"b" + temp} class="mr-6 font-medium text-gray-700">Category: ${item}</label>
-                    <button id=${"c" + temp} value=${temp} style = "max-height:40px;" class="p-2 block text-black justify-end w-auto bg-red-100 hover:bg-gray-300 cursor-pointer removeValue" > Remove</button>
-                </div>
-              </div>  
+        // let c = $("#categoryArr").val() != "[]" ? JSON.parse($("#categoryArr").val()) : []
+        // $("#categoryArr").val(c)
+        // c.map((item, index) => {
+        //   let temp = index
+        //   $("#categories").append(`
+        //       <div id= ${"d" + temp} class="mb-8  w-auto">
+        //         <div class="flex items-center h-5 mt-4">
+        //             <label id=${"b" + temp} class="mr-6 font-medium text-gray-700">Category: ${item}</label>
+        //             <button id=${"c" + temp} value=${temp} style = "max-height:40px;" class="p-2 block text-black justify-end w-auto bg-red-100 hover:bg-gray-300 cursor-pointer removeValue" > Remove</button>
+        //         </div>
+        //       </div>  
 
-        `)
+        // `)
 
-          $(`#${"c" + temp}`).on('click', (ev) => {
-            ev.preventDefault();
-            ev.stopPropagation();
-            let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]']+/g, '').replace("/", "").split(",") : []
-            let category = $(`${"b" + temp}`).html()
-            categories = categories.map((item2) => {
-              if (item2 != category) return item2
-            })
-            $("#categoryArr").val(categories)
-            $(`#${"d" + temp}`).remove()
-          })
-        })
+        //   $(`#${"c" + temp}`).on('click', (ev) => {
+        //     ev.preventDefault();
+        //     ev.stopPropagation();
+        //     let categories = $("#categoryArr").val() != "[]" ? $("#categoryArr").val().replace(/[\[\]']+/g, '').replace("/", "").split(",") : []
+        //     let category = $(`${"b" + temp}`).html()
+        //     categories = categories.map((item2) => {
+        //       if (item2 != category) return item2
+        //     })
+        //     $("#categoryArr").val(categories)
+        //     $(`#${"d" + temp}`).remove()
+        //   })
+        // })
+
       }
 
       function onOtherSelect(selectBox) {

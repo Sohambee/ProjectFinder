@@ -335,15 +335,15 @@
                 <% end %>
                 <% if @project.category? %>
                   <%= project_panel_item(title: t('catergories')) do %>
-                      <% @project.category.each do |category| %>
-                        <%= simple_format Rinku.auto_link(sanitize(category), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: '' }, sanitize: false %>
+                      <% @project.category.each_with_index do |category, index| %>
+                        <%= simple_format Rinku.auto_link(sanitize(index == @project.category.length() - 1 ? category : category + ","), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: '' }, sanitize: false %>
                       <% end %>
                   <% end %>
                 <% end %>
-                <% if !@project.tags.include?("")  %>
+                <% if @project.tags?  %>
                   <%= project_panel_item(title: t('tags')) do %>
-                      <% @project.tags.each do |tag| %>
-                        <%= simple_format Rinku.auto_link(sanitize(tag), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: '' }, sanitize: false %>
+                      <% @project.tags.each_with_index do |tag, index| %>
+                        <%= simple_format Rinku.auto_link(sanitize(index == @project.tags.length() - 1 ? tag : tag + ","), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: '' }, sanitize: false %>
                       <% end %>
                   <% end %>
                 <% end %>

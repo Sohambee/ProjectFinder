@@ -64,12 +64,17 @@
           </div>
           <div class="ml-2" id="categories">
             <% Settings.project_categories.each do |category| %>
-              <input type="checkbox" id="<%= category.name %>" name="<%= category.name %>" value="<%= category.name %>">
-              <label class="ml-2" for="<%= category.name %>"><%= category.name %></label><br>
+              <div class="mt-2 relative flex items-start">
+                <div class="absolute flex items-center h-5">
+                <%= f.check_box :category, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, category.name, nil %>
+                </div>
+                <div class="pl-7 text-sm">
+                  <label id="<%=category.name%>" for="<%=category.name%>" class="font-light text-base text-gray-700">
+                    <%= category.name %>
+                  </label>
+                </div>
+              </div>
             <% end %>
-          </div>
-          <div>
-            <input class="hidden" type="textbox" id="categoryArr" name="project[category][]" class="mt-4" value="<%= @project.category %>" >
           </div>
         </div>
         <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -78,14 +83,19 @@
               Project Tags (optional)
             </legend>
           </div>
-          <div class="" id="tags">
+          <div class="ml-2" id="tags">
             <% Settings.project_tags.each do |tag| %>
-              <input type="checkbox" id="<%= tag.name %>" name="<%= tag.name %>" value="<%= tag.name %>">
-              <label class="ml-2" for="<%= tag.name %>"><%= tag.name %></label><br>
+              <div class="mt-2 relative flex items-start">
+                <div class="absolute flex items-center h-5">
+                <%= f.check_box :tags, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, tag.name, nil %>
+                </div>
+                <div class="pl-7 text-sm leading-5">
+                  <label id="<%=tag.name%>" for="<%=tag.name%>" class="font-light text-base text-gray-700">
+                    <%= tag.name %>
+                  </label>
+                </div>
+              </div>
             <% end %>
-          </div>
-          <div>
-            <input class="hidden" type="textbox" id="tagArr" name="project[tags][]" class="" value="<%= @project.tags %>" >
           </div>
         </div>
         <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
@@ -154,10 +164,11 @@
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
-<script>
+<%# <script>
   $(window).ready(function() {
     let categories = []; //define categories array
     let tags = []; //define categories array
+    
 
     if (window.location.pathname.includes("edit")) {
       let c = $("#categoryArr").val(); //take values of element and set to c
@@ -208,6 +219,9 @@
       }
     });
 
+    console.log(categories);
+    console.log(tags);
+
 
 //------------------------------
     // let tags = []; //define tags array
@@ -252,4 +266,4 @@
 
 </script>
 
-
+ %>

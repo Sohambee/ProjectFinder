@@ -85,7 +85,7 @@ max_volunteers_for_highlight_offer: 30
 project_categories:
   - name: Deep Learning
     slug: deep_learning
-    body: Use Artificial Neural Networks to create projects
+    body: Projects that require a strong understanding of artificial intelligence, deep learning algorithms and programming skills in Python, as well as access to large datasets and powerful computing resources for training and testing.
     project_types:
       - ANN
       - CNN
@@ -94,7 +94,7 @@ project_categories:
     url: https://www.zdnet.com/a/hub/i/r/2018/04/13/36c52953-7ab9-4608-a848-71d1d538856e/resize/1200x900/cb25970cc96ac118c177e2f67690763b/td-deep-learning.jpg
   - name: Robotics
     slug: robotics
-    body: Develop robotic technology
+    body: Projects that require a strong understanding of control systems, and programming skills, as well as access to hardware components, such as microcontrollers, sensors, and actuators.
     project_types:
       - Robotic Arms
       - Automation
@@ -102,7 +102,7 @@ project_categories:
     url: https://www.automate.org/userAssets/riaUploads/image/Robotics%20101%20An%20Overview%20of%20Robots%20in%20Industry%20for%20Beginners.jpeg
   - name: Application Development
     slug: application
-    body: Develop Applications
+    body: Projects that require a strong understanding of programming languages and software development methodologies, as well as design and user experience skills, and an understanding of the target platform and its constraints.
     project_types:
       - Express
       - Java
@@ -138,7 +138,7 @@ project_categories:
     url: https://www.ibm.com/blogs/blockchain/wp-content/uploads/2019/12/Retina_Display-758591537.jpg
   - name: Cryptocurrency
     slug: cryptocurrency
-    body: Create cryptocurrencies or related applications
+    body: Projects that require a strong understanding of cryptography and blockchain technology, as well as programming skills in a language such as Python, Solidity, or Go, and an understanding of the cryptocurrency ecosystem and its challenges.
     project_types:
       - PoW
       - PoS
@@ -148,7 +148,7 @@ project_categories:
     url: https://penntoday.upenn.edu/sites/default/files/2022-01/cryptocurrency-main.jpg
   - name: WEB3
     slug: web3
-    body: Build on the Web 3.0 with the use of blockchain technology
+    body: Projects that require a strong understanding of distributed systems, cryptography, and blockchain technology, as well as programming skills in a language such as JavaScript, Rust, or Solidity, and an understanding of the Web3 ecosystem and its goals.
     project_types:
       - Blockchain
       - File Storage
@@ -158,7 +158,7 @@ project_categories:
     url: https://thevrsoldier.com/wp-content/uploads/2022/01/what-is-web3-how-to-invest.jpg
   - name: Hardware
     slug: hardware
-    body: Create projects with the use of materials and supplies
+    body: Projects that require a strong understanding of electronics, electrical and possibly mechanical engineering, as well as programming skills in a language such as C/C++ or Python, and hands-on experience with hardware components and tools, such as microcontrollers, sensors, actuators, and prototyping boards.
     project_types:
       - Embedded
       - Sensors

@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'Help With Covid <no-reply@helpwithcovid.com>'
+  default from: 'Experia <no-reply@epxeria.com>'
   layout 'mailer'
 end

@@ -67,6 +67,9 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+
+  config.action_mailer.default_url_options = {host: 'experia.studio', protocol: 'http'}
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -113,8 +116,8 @@ Rails.application.configure do
 
   Rails.application.config.middleware.use ExceptionNotification::Rack,
   email: {
-    email_prefix: '[HelpWithCovid] ',
-    sender_address: %{"Help With Covid" <no-reply@helpwithcovid.com>},
+    email_prefix: '[Experia] ',
+    sender_address: %{"Experia" <no-reply@experia.com>},
     exception_recipients: ENV['EXCEPTION_NOTIFIERS']&.split(',')
   }
 end

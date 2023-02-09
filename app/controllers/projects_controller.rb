@@ -103,7 +103,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-      @project = current_user.projects.new(projectParams)
+      @project = current_user.projects.new(project_params)
       $unapproved_projects = Project.get_unapproved
 
 

@@ -45,17 +45,17 @@
   </div>
   <div>
     <!-- Featured projects -->
-    <div id="featuredProjects" class="shadow slider relative rounded-lg container text-center bg-blue-100 z-10 md:pb-4 md:px-15 md:py-10">
+    <div id="featuredProjects" class="flex-col shadow slider relative rounded-lg container text-center bg-blue-100 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'partials/featured-projects', locals: {title: "Most Viewed", projects: @featured_projects, category: nil} %>
     </div>
     <br/>
     <!-- Most Viewed projects -->
-    <div id="mostViewed" class="shadow slider relative rounded-lg container text-center bg-blue-200 z-10 md:pb-4 md:px-15 md:py-10">
+    <div id="mostViewed" class="flex-col shadow slider relative rounded-lg container text-center bg-blue-200 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'partials/most-viewed', locals: {title: "Most Viewed", projects: @most_view_projects, category: nil} %>
     </div>
     <br/>
     <!-- Project categories -->
-    <div id="featuredCategory" class="shadow slider relative rounded-lg container text-center bg-blue-300 z-10 md:pb-4 md:px-15 md:py-10">
+    <div id="featuredCategory" class="flex-col shadow slider relative rounded-lg container text-center bg-blue-300 z-10 md:pb-4 md:px-15 md:py-10">
       <%= render partial: 'featured-category', locals: {collection: @project_categories}%>
     </div>
   </div>

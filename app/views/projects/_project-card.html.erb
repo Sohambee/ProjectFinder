@@ -1,6 +1,9 @@
-<div class='shadow-lg relative h-80 flex flex-col border-2 bg-gray-50 border-gray-300 rounded-lg width block hover:shadow-2xl transform transition-all duration-200'>
+<div class='shadow-lg relative h-80 sm:h-96 flex flex-col bg-gray-50 border-gray-300 rounded-lg width block hover:shadow-2xl transform transition-all duration-200 '>
   <a>
     <%= link_to project, class: 'block transform transition-all duration-100 w-full' do %>
+        <div class='hidden sm:block'>
+            <%= image_tag "gradient.jpeg", class: 'h-32 w-full rounded-t-lg' %>
+        </div>
         <%
           category = Settings.project_categories.select { |cat| cat.name == local_assigns[:category] }.first if local_assigns[:category].present?
 
@@ -24,8 +27,8 @@
           </div>
 
           <div class="text-gray-500 text-clip text-ellipsis text-left text-sm leading-tight overflow-hidden">
-                <div class="text-left h-36">
-                  <%= project.description %>
+                <div class="text-left sm:h-32 h-40">
+                  <%= project.description.truncate 250 %>
                 </div>
           </div>
         </div>

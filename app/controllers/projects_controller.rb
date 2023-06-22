@@ -105,18 +105,26 @@ class ProjectsController < ApplicationController
   def create
       @project = current_user.projects.new(project_params)
       $unapproved_projects = Project.get_unapproved
+      default_image = 'https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?cs=srgb&dl=pexels-codioful-%28formerly-gradienta%29-7130560.jpg&fm=jpg'
 
-
-      respond_to do |format|
-        if @project.save
-          track_event 'Project creation complete'
-          @project.project_initiator = @current_user.username
-          @project.save!
-          format.html { redirect_to @project, notice: I18n.t('project_was_successfully_created') }
-          format.json { render :show, status: :created, location: @project }
-        else
+      if is_valid_link(@project.image_url)
+        respond_to do |format|
+          if @project.save
+            track_event 'Project creation complete'
+            @project.project_initiator = @current_user.username
+            @project.save!
+            format.html { redirect_to @project, notice: I18n.t('project_was_successfully_created') }
+            format.json { render :show, status: :created, location: @project }
+          else
+            format.html { render :new }
+            format.json { render json: @project.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        flash[:error] = "Banner Image Address must be from Unsplash."
+        respond_to do |format|
           format.html { render :new }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
+          format.json { render json: { error: "Banner Image Address must be from Unsplash." }, status: :unprocessable_entity }
         end
       end
   end
@@ -125,37 +133,46 @@ class ProjectsController < ApplicationController
   end
 
   def update
-      # categories =project_params[:category].first().split(',')
-      # tags = project_params[:tags].first().split(',')
-      # projectParams= project_params
+    # categories =project_params[:category].first().split(',')
+    # tags = project_params[:tags].first().split(',')
+    # projectParams= project_params
 
 
-      # projectParams[:category] = categories
-      # categories.each do |category|
-      #  if Categorie.where(category: category).length()==0
-      #    cat = Categorie.create(category: category)
-      #    cat.save!
-      #  end
-      # end
-      
-      if !project_params[:category].instance_of? Array
-        @project.category.clear
-        @project.save!
-      end
+    # projectParams[:category] = categories
+    # categories.each do |category|
+    #  if Categorie.where(category: category).length()==0
+    #    cat = Categorie.create(category: category)
+    #    cat.save!
+    #  end
+    # end
+    
+    if !project_params[:category].instance_of? Array
+      @project.category.clear
+      @project.save!
+    end
 
-      if !project_params[:tags].instance_of? Array
-        @project.tags.clear
-        @project.save!
-      end
+    if !project_params[:tags].instance_of? Array
+      @project.tags.clear
+      @project.save!
+    end
 
-      updated = @project.update(project_params)
+    updated = @project.update(project_params)
+
+    if is_valid_link(@project.image_url)
       respond_to do |format|
-      if updated
-        format.html { redirect_to @project, notice: I18n.t('project_was_successfully_updated') }
-        format.json { render :show, status: :ok, location: @project }
-      else
+        if updated
+          format.html { redirect_to @project, notice: I18n.t('project_was_successfully_updated') }
+          format.json { render :show, status: :ok, location: @project }
+        else
+          format.html { render :edit }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      flash[:error] = "Banner Image Address must be from Unsplash."
+      respond_to do |format|
         format.html { render :edit }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.json { render json: { error: "Banner Image Address must be from Unsplash." }, status: :unprocessable_entity }
       end
     end
   end

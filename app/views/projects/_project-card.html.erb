@@ -2,7 +2,11 @@
   <a>
     <%= link_to project, class: 'block transform transition-all duration-100 w-full' do %>
         <div class='hidden sm:block'>
-            <%= image_tag "gradient.jpeg", class: 'h-24 w-full rounded-t-lg' %>
+          <% if project.image_url != '' %>
+              <%= image_tag project.image_url, class: 'h-24 w-full rounded-t-lg' %>
+          <% else %>
+              <%= image_tag "gradient.png", class: 'h-24 w-full rounded-t-lg' %>
+          <% end %>
         </div>
         <%
           category = Settings.project_categories.select { |cat| cat.name == local_assigns[:category] }.first if local_assigns[:category].present?

@@ -19,10 +19,8 @@
 <script>
   $(window).ready(function() {
     let categories = JSON.parse(`<%= raw Settings.project_categories.to_json %>`);
-    console.log(window.location.pathname.split("/"))
 
     categories.forEach((value) => {
-      console.log(value.slug);
       if (window.location.pathname.split("/")[1] == value.slug) {
         $(`.${value.slug}`).attr('class', 'submenu-item items-center px-1 pb-4 border-b border-primary-600 hover:border-primary-600 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out ml-4 text-center');
       } else if (window.location.pathname.split("/")[1] == 'projects') {
